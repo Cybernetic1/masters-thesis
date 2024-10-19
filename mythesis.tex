@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HKUST Thesis LaTeX Template
+%%
+%% Check the project website for latest updates:
+%% https://github.com/HKFoggyU/hkust-thesis
+%%
+%% Contributors:
+%% https://github.com/HKFoggyU/hkust-thesis/graphs/contributors
+%% 
+%% License:
+%% LaTeX Project Public License (version 1.3c)
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Pass options to loaded packages in `.cls` file:
+% \PassOptionsToPackage{separate-uncertainty=true, separate-uncertainty-units=single}{siunitx}
+
+%% The following option is to set hyperref colors for preview,
+%% but commented by default for submission and printing
+% \PassOptionsToPackage{colorlinks=true,urlcolor=blue,citecolor=red,anchorcolor=blue}{hyperref}
+
+%% The following option is to display the full name of the authors.
+%% It comes with the setting to display the full author names in the List of Publications
+\PassOptionsToPackage{firstinits=false}{biblatex}
+
+\documentclass[
+  %customlatinfont = windows,
+  %custombibstyle = nature,
+  displaycommittee = false,
+  blankpage = true,
+]{hkustthesis}
+
+%% Thesis information
+\hkustsetup {
+  %% Please wrap the items with {}.
+  %% If one item is not applicable, just leave it {}.
+  %% Please do not leave any blank lines without {}.
+  info = {
+    degree        = {mphil},  %% phd / mphil
+    title         = {Algebraic Logic\texorpdfstring{\\}{}for Deep Learning},
+    keywords      = {algebraic logic, deep learning, artificial intelligence},
+    author        = {YKY},
+    school        = {Some Univ in Canada},
+    department    = {Department of Maths},
+    program       = {Applied Mathematics},
+    major         = {},
+    supervisor    = {Prof. Who},
+    %% Co-supervisor; leave it {} if not available
+    co-supervisor = {Prof. Who Else},
+    submit-month  = {August 2024},      % <month year>
+    submit-date   = {13 August 2024},   % <date month year>
+    defend-date   = {8 March 2024},     % <date month year>
+    depthead      = {Prof. Ikari Someone, Head of Department},
+    %% reviewers only for some departments, like ECE
+    reviewer      = {Prof. AAA (Chairperson), 
+                     Prof. BBB (Supervisor),
+                     Prof. CCC (Co-Supervisor),
+                     Prof. DDD,
+                     Prof. EEE,
+                     Prof. FFF},
+    reviewerdept  = {Department of Electronic and Computer Engineering,
+                     Department of ECE,
+                     Department of ECE,
+                     Department of ECE,
+                     Department of ECE,
+                     Department of Physics},
+    reviewerext   = {Prof. FFF (External Examiner),
+                     Department of HH\\{University of UU, at VV}},
+    % reviewerext   = {},
+    city          = {Hong Kong},
+  }
+}
+
+%% Import extra packages
+% \usepackage{indentfirst, xspace, xcolor}
+
+%% Add custom command
+% \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+\newcommand{\eg}{\textit{e.g.}, }
+\newcommand{\ie}{\textit{i.e.}, }
+
+%% Import bib file for bibliography
+\addbibresource{mythesis.bib}
+
+\begin{document}
+
+%% -------------------------------------------------
+%% Thesis structure: In the order of
+%% -------------------------------------------------
+%% Titlepage  -> Authorization -> Signature ->
+%% Acknowledgements ->
+%% TOC -> List of Figures -> List of Tables ->
+%% Abstract -> 
+%% -------------------------------------------------
+%% <Main body> -> 
+%% -------------------------------------------------
+%% References -> (Appendices)
+%% -------------------------------------------------
+
+\frontmatter
+\maketitle 
+
+\authorization
+\signaturepage
+
+\input{chapters/Pre_Acknowledgements.tex}
+
+\tableofcontents
+\listoffigures
+\listoftables
+% TODO: see \cmd{\newlistofalgorithms}
+\newlistofalgorithms % This is to maintain the same appearance
+
+%% Dedication and Preface are optional
+%\input{chapters/Pre_Dedication.tex}
+%\input{chapters/Pre_Preface.tex}
+\input{chapters/Pre_Abstract.tex}
+
+%% -------------------------------------------------
+%% Main body
+%% -------------------------------------------------
+\mainmatter
+
+\input{chapters/Ch_Introduction.tex}
+\input{chapters/Ch_ExampleChapter.tex}
+\input{chapters/Ch_Conclusion.tex}
+
+%% -------------------------------------------------
+%% References
+%% -------------------------------------------------
+
+\printbibliography[heading=bibintoc,title=References]
+
+%% -------------------------------------------------
+%% Appendices
+%% -------------------------------------------------
+\appendix
+
+\input{chapters/Appendix_Publications.tex}
+\input{chapters/Appendix_Requirements.tex}
+
+\end{document}
