@@ -1,2 +1,3 @@
 # masters-thesis
-my master's thesis:  algebraic geometry for deep learning
+
+My master's thesis:  algebraic geometry for deep learning
