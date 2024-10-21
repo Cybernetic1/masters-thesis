@@ -1,5 +1,34 @@
 \chapter{Introduction}\label{chap:introduction}
 
+\section{Background}
+
+Lambek:
+\begin{equation}
+\begin{tikzcd}[row sep=1cm, column sep=0.6cm]
+& \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash] \arrow[dr,dash] & \\
+\mbox{logic} \arrow[rr,dash] & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory}
+\end{tikzcd}
+\end{equation}
+
+I am very curious to see if the two algebras below would coincide?
+\begin{equation}
+\begin{tikzcd}[row sep=1cm, column sep=0.6cm]
+ & & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash] \arrow[dr,dash] & & & \\
+\parbox{2cm}{\linespread{-0.5}\selectfont\centering algebraic logic} \arrow[rrrrr, dashed, dash, bend right] \arrow[r,dash] & \mbox{logic} \arrow[rr,dash] & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory} \arrow[r,dash] & \mbox{topos} \arrow[r,dash] & \parbox{2cm}{\linespread{-0.5}\selectfont\centering algebraic geometry}
+\end{tikzcd}
+\end{equation}
+
+\section{Paul Halmos}
+
+Every Boolean algebra $\mathbb{A}$ is isomorphic to the set of all continuous functions from $X$ into $\mathbb{O}$, where $X$ is the dual space of the algebra $\mathbb{A}$, and $\mathbb{O}$ is the Boolean algebra with 2 elements.  If there is a homomorphism $f$ between Boolean algebras $\mathbb{A} \rightarrow \mathbb{B}$ then there is a dual morphism $f^*$ between their dual spaces $Y \rightarrow X$:
+\begin{equation}
+\begin{tikzcd}[column sep=3cm, row sep=0.6cm]
+\mathbb{A} \arrow[r,"f"] \arrow[d,shift left=2,phantom,"\cong"{anchor=south,rotate=90}] & \mathbb{B} \arrow[d,shift left=2,phantom,"\cong"{anchor=south,rotate=90}] \\
+\overbracket{X} \arrow[d] & \overbracket{Y} \arrow[d] \arrow[l,"f^*"] \\
+\underbracket{\mathbb{O}} & \underbracket{\mathbb{O}} 
+\end{tikzcd}
+\end{equation}
+
 \section{The set-up}
 
 The set of equations $F$ defines an algebraic set = \textbf{the world}:
@@ -10,7 +39,7 @@ The objective of an intelligent agent is to learn $F$.
 
 We have the function $f$ performing \textbf{prediction} of the immediate future:
 \begin{equation}
-\mbox{current state} \stackrel{f}{\mapsto} \mbox{next state} .
+\boxed{\mbox{current state}} \quad x_t \stackrel{f}{\mapsto} x_{t+1} \quad \boxed{\mbox{next state}} \;.
 \end{equation}
 
 In an infinitesimal sense, we can see $f$ as a \textbf{differential equation} describing the \textbf{world trajectory}:
@@ -28,11 +57,13 @@ What does it mean to use logic to express $F$ or $f$?
 \begin{equation}
 \begin{tabular}{|c|c|c|}
 	\hline
-	\textbf{Logic} & facts & rules \\
+	\textbf{LOGIC} & \textbf{facts} & \textbf{rules} \\
+		& \mbox{human(socrates)} & $\forall x. \mbox{human}(x) \rightarrow \mbox{mortal}(x)$ \\
 	\hline
-	\textbf{Algebra} & ? &  ? \\
+	\textbf{ALGEBRA} & \textbf{element} & \textbf{element} \\
+		& $p \in \mathbb{A} $ & $(p \rightarrow q) \in \mathbb{A} $ \\
 	\hline
-	\textbf{World} & states & state transitions \\
+	\textbf{WORLD} & \textbf{states} & \textbf{state transitions} \\
 		& $x_t$ & $x_t \stackrel{f}{\mapsto} x_{t+1}$ \\
 	\hline
 \end{tabular}
