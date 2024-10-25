@@ -5,8 +5,8 @@
 Lambek:
 \begin{equation}
 \begin{tikzcd}[row sep=1cm, column sep=0.6cm]
-& \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash,"Curry","Howard"',sloped] \arrow[dr,dash] & \\
-\mbox{logic} \arrow[rr,dash] & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory}
+& \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash,"Curry-","Howard"',sloped] \arrow[dr,dash,"\text{obvious}",sloped] & \\
+\mbox{logic} & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory} \arrow[ll,"\text{internal}"',"\text{language}"]
 \end{tikzcd}
 \end{equation}
 
@@ -34,6 +34,8 @@ Every Boolean algebra $\mathbb{A}$ is isomorphic to the set of all continuous fu
 
 
 \section{Topos and internal language}
+
+\section{Term rewriting and all that}
 
 
 
@@ -79,3 +81,47 @@ The following table depicts the main correspondences relevant to our research:
 \end{equation}
 The relation between LOGIC and WORLD has been elucidated quite thoroughly in the AI literature.  Note that the state $x_t$ is made up of a set of facts (logic propositions).  A single step of logic inference results in a new conclusion $\delta x$ which is \textit{added} (as a set element) to the current state $x_t$ to form a new state $x_{t+1}$.  Here $t$ refers to ``mental time'' which does not necessarily coincide with real time.
 
+\section{From abstract algebraic logic to concrete computations}
+
+There are two main routes to make abstract algebraic logic concrete:
+\begin{itemize}
+	\item Find \textbf{matrix representations} of the logical algebra
+	\item Implement the logical algebra as the commutative algebra of (classical) \textbf{polynomials}
+\end{itemize}
+
+\section{What does it mean to train the AI?}
+
+From the previous section,
+\begin{equation}
+F(x) = 0 \quad \mbox{is the solution to} \quad \dot{x} = f(x)
+\end{equation}
+and the two descriptions (by $F$ or by $f$) are equivalent.
+
+The sensory data from the AI are a set of ``world'' points $\{ x_i \}$  and we require either:
+\begin{equation}
+F(x_t) = 0 \quad \mbox{or} \quad f(x_t) = \delta x = x_{t+1} - x_t
+\end{equation}
+and $F$ or $f$ can be trained by gradient descent to eliminate errors in the above conditions (equations).
+
+\begin{itemize}
+	\item the $x_t$'s are represented as \textbf{logic facts}
+	\item $F$ or $f$ is represented as \textbf{logic rules}
+\end{itemize}
+and we need to \textbf{evaluate} $F(x_t)$ or $f(x_t)$.
+
+Let's do some examples:
+\begin{equation}
+\begin{tabular}{|c|c|}
+	\hline
+	\textbf{Logic formula} & \textbf{Algebraic form} \\
+	\hline
+	human(socrates) & h(s) = 1 \\
+	\hline
+	human(socrates) $\wedge$ human(plato) & h(s) $\cdot$ h(p) = 1 \\
+	\hline
+	human(socrates) $\rightarrow$ mortal(socrates) &  1 + h(s) + h(s) $\cdot$ m(s) = 1 \\
+	\hline
+	$\forall x.$ human($x$) $\rightarrow$ mortal($x$) & \\
+	\hline
+\end{tabular}
+\end{equation}
