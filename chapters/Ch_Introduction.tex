@@ -127,11 +127,17 @@ Let's do some examples:
 	$\forall x.$ human($x$) $\rightarrow$ mortal($x$) & $\forall \bigl( 1 + h(x) + h(x) \cdot m(x) \bigr) $ \\
 		& is a constant function mapping to 1 or 0 \\
 	\hline
-	$\forall x,y,z.$ father($x,y$) \wedge father($y,z$) $\rightarrow$ & $\forall \bigl( 1 + h(x) + h(x) \cdot m(x) \bigr) $ \\
-	grandfather($x,z$) & \mapsto 0 or 1 \\
+	$\forall x,y,z.$ father($x,y$) $\wedge$ father($y,z$) $\rightarrow$ & ??? $\forall \bigl( 1 + h(x) + h(x) \cdot m(x) \bigr) $ \\
+	grandfather($x,z$) & $\mapsto$ 0 or 1 \\
 	\hline
 \end{tabular}
 \nonumber
 \end{equation}
 
-Now what if there are millions of rules?  
+\begin{itemize}
+	\item Now what if there are millions of rules?
+	\item Does each equation require new variables, or can variables be re-used?
+	\item Number of predicates obviously increases
+	\item 
+\end{itemize}
+
