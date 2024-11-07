@@ -110,6 +110,7 @@ and $F$ or $f$ can be trained by gradient descent to eliminate errors in the abo
 and we need to \textbf{evaluate} $F(x_t)$ or $f(x_t)$.
 
 Let's do some examples:
+% \usetagform{hidden}
 \begin{equation}
 \begin{tabular}{|c|c|}
 	\hline
@@ -134,7 +135,7 @@ Let's do some examples:
 	$\forall_{x...} P \wedge Q \wedge R ... \rightarrow Z$ & $\mapsto$ 0 or 1 \\
 	\hline
 \end{tabular}
-\nonumber
+\label{table:formulas}
 \end{equation}
 
 Now imagine there are millions of such rules.  Number of predicates obviously increases.
@@ -151,7 +152,7 @@ How are new conclusions added to the state?  What is the state?  State = set of 
 
 Inference:  how to get from current state to next state?  Big problem!!  New ground facts have to be read off from satisfaction of all equations.  Rather intractable...
 
-Go back to a physics example:
+Go back to a physics example, the parabolic trajectory of a canon ball:
 \begin{equation}
 \vcenter{\hbox{\includegraphics[scale=0.7]{canonball-parabola.png}}}
 \end{equation}
@@ -165,7 +166,9 @@ but the trajectory can also be described by the physics equation parameterized b
 \end{equation}
 This parametric form is not unique.  For example, another way is for the point $\mathbf{x}$ to move with uniform speed along the trajectory.
 
-$f(x)$ is the functional form we want, 
+$f(x)$ is the functional form we want, as it contains information about the ``interestingness'' of deduced conclusions.
+
+Are our equations in Table \ref{table:formulas} describing $F$ or $f$?  
 
 Potential problems:
 \begin{itemize}
