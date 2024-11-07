@@ -149,7 +149,23 @@ Learning means to perform the \textbf{gradient descent} via $ \nabla_\Phi \mathc
 
 How are new conclusions added to the state?  What is the state?  State = set of facts = set of \textbf{grounded} equations.
 
-Inference:  how to get from current state to next state?  Big problem!!  New ground facts have to be read off from satisfaction of all equations.  Rather intractable...  
+Inference:  how to get from current state to next state?  Big problem!!  New ground facts have to be read off from satisfaction of all equations.  Rather intractable...
+
+Go back to a physics example:
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.7]{canonball-parabola.png}}}
+\end{equation}
+The parabola is given by the quadratic equation from high school:
+\begin{equation}
+	F(x) = 0 \qquad F(x) = ax^2 + bx + c
+\end{equation}
+but the trajectory can also be described by the physics equation parameterized by time $t$:
+\begin{equation}
+	\dot{\mathbf{x}} = f(\mathbf{x}) = (v_x, v_y) = (v^0_x , -gt + v^0_y) .
+\end{equation}
+This parametric form is not unique.  For example, another way is for the point $\mathbf{x}$ to move with uniform speed along the trajectory.
+
+$f(x)$ is the functional form we want, 
 
 Potential problems:
 \begin{itemize}
