@@ -18,7 +18,7 @@ I am very curious to see if the two algebras below would coincide?
 \end{tikzcd}
 \end{equation}
 
-\section{Paul Halmos}
+\section{Paul Halmos' algebraic logic}
 
 Every Boolean algebra $\mathbb{A}$ is isomorphic to the set of all continuous functions from $X$ into $\mathbb{O}$, where $X$ is the dual space of the algebra $\mathbb{A}$, and $\mathbb{O}$ is the Boolean algebra with 2 elements.  If there is a homomorphism $f$ between Boolean algebras $\mathbb{A} \rightarrow \mathbb{B}$ then there is a dual morphism $f^*$ between their dual spaces $Y \rightarrow X$:
 \begin{equation}
@@ -122,22 +122,39 @@ Let's do some examples:
 	human(socrates) $\rightarrow$ mortal(socrates) &  1 + h(s) + h(s) $\cdot$ m(s) = 1 \\
 	\hline
 	$\forall x.$ human($x$) & $h(x)$ is a propositional function \\
-		& $\forall h(x)$ is a constant function mapping to 1 or 0 \\
+		& $\forall_x h(x)$ is a constant function mapping to 1 or 0 \\
 	\hline
-	$\forall x.$ human($x$) $\rightarrow$ mortal($x$) & $\forall \bigl( 1 + h(x) + h(x) \cdot m(x) \bigr) $ \\
+	$\forall x.$ human($x$) $\rightarrow$ mortal($x$) & $\forall_x \bigl( 1 + h(x) + h(x) \cdot m(x) \bigr) $ \\
 		& is a constant function mapping to 1 or 0 \\
 	\hline
-	$\forall x,y,z.$ father($x,y$) $\wedge$ father($y,z$) $\rightarrow$ & ??? $\forall \bigl( 1 + h(x) + h(x) \cdot m(x) \bigr) $ \\
+	$\forall x,y,z.$ father($x,y$) $\wedge$ father($y,z$) $\rightarrow$ & $\forall_x \forall_y \forall_z \bigl( 1 + f(x,y) \cdot f(y,z) + f(x,y) \cdot f(y,z) \cdot g(x,z) \bigr) $ \\
 	grandfather($x,z$) & $\mapsto$ 0 or 1 \\
+	\hline
+	\textbf{general Horn formula}: & $\forall_{x...} \big( 1 + P \cdot Q \cdot R .... + P \cdot Q \cdot R ... \cdot Z \big) $ \\
+	$\forall_{x...} P \wedge Q \wedge R ... \rightarrow Z$ & $\mapsto$ 0 or 1 \\
 	\hline
 \end{tabular}
 \nonumber
 \end{equation}
 
+Now imagine there are millions of such rules.  Number of predicates obviously increases.
+
+Does each equation require new variables, or can variables be re-used? Seems yes, can be re-used.
+
+The \textbf{loss function} would be the sum of squared errors over all equations:
+\begin{equation}
+\mathcal{L} = \sum_{\mathrm{eqns}} \epsilon^2 = \sum_i \big( \phi_i (x...) - 1 \big)^2 .
+\end{equation}
+Learning means to perform the \textbf{gradient descent} via $ \nabla_\Phi \mathcal{L} = \frac{\partial \mathcal{L}}{\partial \Phi} $ where $\Phi$ is the set of parameters for the equations.
+
+How are new conclusions added to the state?  What is the state?  State = set of facts = set of \textbf{grounded} equations.
+
+Inference:  how to get from current state to next state?  Big problem!!  New ground facts have to be read off from satisfaction of all equations.  Rather intractable...  
+
+Potential problems:
 \begin{itemize}
-	\item Now what if there are millions of rules?
-	\item Does each equation require new variables, or can variables be re-used?
-	\item Number of predicates obviously increases
-	\item 
+	\item How to represent the set of equations efficiently?  Matrix of coefficients seems wasteful.
+	\item We have lost the ``\textbf{deepness}'' of deep learning, but there is recent research showing that \textbf{shallow learning} may work well too.
+	\item Need to iterate logical inference multiple times using the same set of equations.
 \end{itemize}
 
