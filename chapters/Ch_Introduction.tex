@@ -37,7 +37,29 @@ Every Boolean algebra $\mathbb{A}$ is isomorphic to the set of all continuous fu
 
 \section{Term rewriting and all that}
 
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.7]{term-rewriting-and-all-that.png}}}
+\end{equation}
 
+\begin{itemize}
+	\item What is the \textbf{word problem}? \\
+	is defined for an equational theory $E$. \\
+	is the problem of deciding whether $s = t$
+
+	\item why is Gr\"{o}bner basis equivalent to the word problem？ \\
+	to ask ideal congruence $f =? g$ means $f - g \in? J$ \\
+	which is ideal membership problem \\
+	a polynomial can be regarded as a rewrite rule \\
+	because $f = 0$, we can take the ``largest monomial'' in $f$ as the LHS, and the rest of $f$ as RHS. \\
+	In other words:  ideal = set of rules \\
+	We ask if a polynomial can be rewritten by the set of rules to another form.  \\
+	This is similar to logic deduction.
+	
+	\item Here an important question is: polynomial reduction seems unable to handle \textbf{logic variables}, it seems only capable of \textbf{simple symbolic rewriting}.
+	
+	\item logic is equivalent to what form of polynomials? \\
+	taking the cue that Huet's higher-order unification = Buchberger algorithm, ...
+\end{itemize}
 
 \section{The set-up}
 
@@ -169,6 +191,10 @@ This parametric form is not unique.  For example, another way is for the point $
 $f(x)$ is the functional form we want, as it contains information about the ``interestingness'' of deduced conclusions.
 
 Are our equations in Table \ref{table:formulas} describing $F$ or $f$?  
+
+An intuitive idea:  state = facts = grounded equations, rules = quantified equations.  So the equations are modeling $f$.  This exposed a problem of classical AI that I have not paid too much attention to:  the selection of interesting conclusions.  It's hard to enumerate conclusions, let alone to rate their interestingness.
+
+
 
 Potential problems:
 \begin{itemize}
