@@ -170,6 +170,13 @@ The \textbf{loss function} would be the sum of squared errors over all equations
 \end{equation}
 Learning means to perform the \textbf{gradient descent} via $ \nabla_\Phi \mathcal{L} = \frac{\partial \mathcal{L}}{\partial \Phi} $ where $\Phi$ is the set of parameters for the equations.
 
+Potential problems:
+\begin{itemize}
+	\item How to represent the set of equations efficiently?  Matrix of coefficients seems wasteful.
+	\item We have lost the ``\textbf{deepness}'' of deep learning, but there is recent research showing that \textbf{shallow learning} may work well too.
+	\item Need to iterate logical inference multiple times using the same set of equations.
+\end{itemize}
+
 How are new conclusions added to the state?  What is the state?  State = set of facts = set of \textbf{grounded} equations.
 
 Inference:  how to get from current state to next state?  Big problem!!  New ground facts have to be read off from satisfaction of all equations.  Rather intractable...
@@ -192,14 +199,5 @@ $f(x)$ is the functional form we want, as it contains information about the ``in
 
 Are our equations in Table \ref{table:formulas} describing $F$ or $f$?  
 
-An intuitive idea:  state = facts = grounded equations, rules = quantified equations.  So the equations are modeling $f$.  This exposed a problem of classical AI that I have not paid too much attention to:  the selection of interesting conclusions.  It's hard to enumerate conclusions, let alone to rate their interestingness.
-
-
-
-Potential problems:
-\begin{itemize}
-	\item How to represent the set of equations efficiently?  Matrix of coefficients seems wasteful.
-	\item We have lost the ``\textbf{deepness}'' of deep learning, but there is recent research showing that \textbf{shallow learning} may work well too.
-	\item Need to iterate logical inference multiple times using the same set of equations.
-\end{itemize}
+An intuitive idea:  state = facts = grounded equations, rules = quantified equations.  So the equations are modeling $f$.  This exposed a problem of classical AI that I have not paid too much attention to:  the selection of interesting conclusions.  It's hard to \textbf{enumerate conclusions}, let alone to rate their interestingness.
 
