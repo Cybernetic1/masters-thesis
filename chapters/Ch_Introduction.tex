@@ -167,6 +167,7 @@ Does each equation require new variables, or can variables be re-used? Seems yes
 The \textbf{loss function} would be the sum of squared errors over all equations:
 \begin{equation}
 \mathcal{L} = \sum_{\mathrm{eqns}} \epsilon^2 = \sum_i \big( \phi_i (x...) - 1 \big)^2 .
+\label{loss-function}
 \end{equation}
 Learning means to perform the \textbf{gradient descent} via $ \nabla_\Phi \mathcal{L} = \frac{\partial \mathcal{L}}{\partial \Phi} $ where $\Phi$ is the set of parameters for the equations.
 
@@ -195,9 +196,21 @@ but the trajectory can also be described by the physics equation parameterized b
 \end{equation}
 This parametric form is not unique.  For example, another way is for the point $\mathbf{x}$ to move with uniform speed along the trajectory.
 
+Note that the trajectory above is qualitatively the same as a ``thought trajectory'' in cognitive space.  One intuitive way to visualize cognitive trajectories is via the example of a chess game tree:
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.7]{chess-game-tree.png}}}
+\end{equation}
+
 $f(x)$ is the functional form we want, as it contains information about the ``interestingness'' of deduced conclusions.
 
 Are our equations in Table \ref{table:formulas} describing $F$ or $f$?  
 
 An intuitive idea:  state = facts = grounded equations, rules = quantified equations.  So the equations are modeling $f$.  This exposed a problem of classical AI that I have not paid too much attention to:  the selection of interesting conclusions.  It's hard to \textbf{enumerate conclusions}, let alone to rate their interestingness.
 
+How to enumerate conclusions?  The loss function (\ref{loss-function}) can be trained on any data with correlations.  But what we have is data in the form of time series.  Need extra measures to ensure that equations only model $x_t \rightarrow x_{t+\Delta t}$.  Now how to enumerate conclusions?  From current state, iterate over all equations to generate new states.  This is getting very close to the classical logic-based AI inference algorithm.
+
+The \textbf{interestingness function} gives a probability distribution over conclusions given the current ``context'' (which we identify as the current state $x_t$): $ \mathrm{Intg}(\delta x) = \mathbb{P}(\delta x | x_t) $.  This function has to be learned.  It has an equivariant structure due to the state as a set of propositions with permutation invariance.
+
+One more efficiency problem:  iterating through all equations is inefficient, which brings back the necessity of the classical \textbf{rete algorithm}:  instead of matching rules against the state, we should match the current state against rules.  In other words, instead of $\delta x := \bigcup_i \mathrm{rule}_i (x)$, perform $\delta x := \text{compiled-rules}(\Delta x) $, where $\Delta x$ is the change of the current state from the previous state, and $\delta x$ is the change from the current state to the next state.
+
+But we may also avoid the rete algorithm by stacking logical equations into \textbf{layers}, thus getting an efficiency advantage similar to deep learning.  A ``single'' step of logic inference would mean going through multiple layers of logic rules (equations).  
