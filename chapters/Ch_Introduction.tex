@@ -2,21 +2,25 @@
 
 \section{Background}
 
-Lambek:
+Lambek posited this ``trinity'':
 \begin{equation}
-\begin{tikzcd}[row sep=1cm, column sep=0.6cm]
+\begin{tikzcd}[row sep=1cm, column sep=1cm]
 & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash,"Curry-","Howard"',sloped] \arrow[dr,dash,"\text{obvious}",sloped] & \\
-\mbox{logic} & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory} \arrow[ll,"\text{internal}"',"\text{language}"]
+   \mbox{logic} \arrow[rr,shift left=2pt,harpoon,"\text{classifying topos}"]  & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory}
+   \arrow[ll, shift left=2pt, harpoon, "\text{internal language}"]
 \end{tikzcd}
 \end{equation}
+where the double arrows at the base can be understood thusly:
 
-I am very curious to see if the two algebras below would coincide?
+
+I extended some nodes to better see their relations:
 \begin{equation}
 \begin{tikzcd}[row sep=1cm, column sep=0.6cm]
  & & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash] \arrow[dr,dash] & & & \\
 \parbox{2cm}{\linespread{-0.5}\selectfont\centering algebraic logic} \arrow[rrrrr, dashed, dash, bend right,"?"] \arrow[r,dash] & \mbox{logic} \arrow[rr,dash] & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory} \arrow[r,dash] & \mbox{topos} \arrow[r,dash] & \parbox{2cm}{\linespread{-0.5}\selectfont\centering algebraic geometry}
 \end{tikzcd}
 \end{equation}
+I am curious if the two algebras on the left and right are identical?
 
 \section{Paul Halmos' algebraic logic}
 
@@ -214,3 +218,19 @@ The \textbf{interestingness function} gives a probability distribution over conc
 One more efficiency problem:  iterating through all equations is inefficient, which brings back the necessity of the classical \textbf{rete algorithm}:  instead of matching rules against the state, we should match the current state against rules.  In other words, instead of $\delta x := \bigcup_i \mathrm{rule}_i (x)$, perform $\delta x := \text{compiled-rules}(\Delta x) $, where $\Delta x$ is the change of the current state from the previous state, and $\delta x$ is the change from the current state to the next state.
 
 But we may also avoid the rete algorithm by stacking logical equations into \textbf{layers}, thus getting an efficiency advantage similar to deep learning.  A ``single'' step of logic inference would mean going through multiple layers of logic rules (equations).  
+
+\section{``Geometric'' logic inference algorithm}
+
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.5]{geometric-logic-algorithm.png}}}
+\end{equation}
+
+\begin{itemize}
+	\item What is a logic fact within a state?
+	\item How does a rule generate a single new fact?
+\end{itemize}
+
+A fact consists of a point (in subject space) and a predicate that contains it.  The point itself does not suffice because it can belong to various predicates.  
+
+To apply a rule, each \textbf{atomic term} in the rule has to be satisfied.  For each predicate $Q()$, this is verified by testing if we have any points among the facts contained in $Q$.
+
