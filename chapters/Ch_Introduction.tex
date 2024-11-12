@@ -237,3 +237,5 @@ To apply a rule, each \textbf{atomic term} in the rule has to be satisfied.  For
 If we have \textsf{father(john, pete)} as a fact then we certainly can satisfy \textsf{father}$(x,y)$.  But we already have the point \textsf{(john, pete)} which may satisfy other predicates $Q(x,y)$.  So our method is slightly more permissive (and thus more powerful) in rules matching.
 
 How does the rule's RHS generate a new fact?  It should also be a (point, predicate) pair.  The point has to \textbf{match} the premise.  How could this be ensured?
+
+Secondly, the output predicate may not cover the point.
