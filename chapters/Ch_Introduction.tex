@@ -244,4 +244,7 @@ The matching process:  syntactically, we look at each literal in the rule and se
 
 The matching of the second literal will also return a point, but its coordinates would be bound to different dimensions.  
 
-The binding of coordinates would be the basis of verifying the rule.  
+The binding of coordinates would be the basis of verifying the rule LHS.
+
+RHS:  The bound variables (in various dimensions) need to be projected to the output space.  It may or may not be covered by the output predicate.  If not, the rule does \textit{not} apply.  This is in accord with the principle that rules should not change during inference.
+
