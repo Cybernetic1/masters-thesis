@@ -15,18 +15,3 @@ Each literal in the rule may be negated, how to handle this?
 Each literal contains a predicate and its arguments, which can be constants or variables.
 
 It seems that genetic algorithms would be best suited for this kind of search for rules...  or unless the rules are represented in such a way that they can continuously vary in a differentiable manifold.
-
-
-
-\section{Rules recommender}
-
-The rules recommender would be a set function:
-\begin{equation}
-	\mathsf{Ru}: \{ \mbox{current state} \} \rightarrow \{ \mbox{set of rules} \}
-\end{equation}
-which has equivariant structure on both its input and output.  This suggests the \textbf{Transformer} architecture is suitable for learning this function.
-
-\section{Interestingness}
-
-This can be implemented implicitly by making the inference algorithm output a probability distribution over all deduced conclusions and then picking the most probable one.
-

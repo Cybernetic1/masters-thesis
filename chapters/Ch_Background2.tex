@@ -1,3 +1,24 @@
-\chapter{Conclusions}\label{chap:conclusions}
+\chapter{Background: Categorical logic}\label{chap:background2}
 
-Some conclusion text.
+Lambek posited this ``trinity'':
+\begin{equation}
+\begin{tikzcd}[row sep=1cm, column sep=1cm]
+& \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash,"Curry-","Howard"',sloped] \arrow[dr,dash,"\text{obvious}",sloped] & \\
+\mbox{logic} \arrow[rr,shift left=2pt,harpoon,"\text{classifying topos}"]  & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory}
+\arrow[ll, shift left=2pt, harpoon, "\text{internal language}"]
+\end{tikzcd}
+\end{equation}
+where the double arrows at the base can be understood thusly:
+
+
+I extended some nodes to better see their relations:
+\begin{equation}
+\begin{tikzcd}[row sep=1cm, column sep=0.6cm]
+& & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering type theory} \arrow[dl,dash] \arrow[dr,dash] & & & \\
+\parbox{2cm}{\linespread{-0.5}\selectfont\centering algebraic logic} \arrow[rrrrr, dashed, dash, bend right,"?"] \arrow[r,dash] & \mbox{logic} \arrow[rr,dash] & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering category theory} \arrow[r,dash] & \mbox{topos} \arrow[r,dash] & \parbox{2cm}{\linespread{-0.5}\selectfont\centering algebraic geometry}
+\end{tikzcd}
+\end{equation}
+I am curious if the two algebras on the left and right are identical?
+
+\section{Topos and internal language}
+
