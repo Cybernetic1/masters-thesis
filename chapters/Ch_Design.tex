@@ -1,4 +1,4 @@
-\chapter{Theory}\label{chap:theory}
+\chapter{Design of algorithm}\label{chap:algorithm}
 
 The following table depicts the main correspondences relevant to our research:
 \begin{equation}
@@ -33,9 +33,14 @@ F(x) = 0 \quad \mbox{is the solution to} \quad \dot{x} = f(x)
 \end{equation}
 and the two descriptions (by $F$ or by $f$) are equivalent.
 
+The discrete version of $f$ is $\squaref$:
+\begin{equation}
+	\squaref(x_t) = x_{t+1} - x_t = \delta x
+\end{equation}
+
 The sensory data from the AI are a set of ``world'' points $\{ x_i \}$  and we require either:
 \begin{equation}
-F(x_t) = 0 \quad \mbox{or} \quad f(x_t) = \delta x = x_{t+1} - x_t
+F(x_t) = 0 \quad \mbox{or} \quad \squaref(x_t) = \delta x = x_{t+1} - x_t
 \end{equation}
 and $F$ or $f$ can be trained by gradient descent to eliminate errors in the above conditions (equations).
 
@@ -187,7 +192,38 @@ which has equivariant structure on both its input and output.  This suggests the
 
 But this is clearly \textbf{non-differentiable}!  
 
-In binary logic a rule either applies or does not apply.  To make the entire set of rules differentiable, rule application must be ``graded''.  
+In binary logic a rule either applies or does not apply.  To make the entire set of rules differentiable, rule application must be ``graded''.
+
+So we propose a \textbf{probabilistic} rule-matching mechanism:
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.7]{rules-recommender.png}}}
+\end{equation}
+Rules are mapped by a function $\rho$ to the state space, such that rules are located close to the states they are most likely to match (this is a multi-objective optimization problem).  Given a current state $x$, denote the ball around it as $B(x, d)$.  The rules we predict most likely to match $x$ are given by $\rho^{-1}(B(x,d))$ for some distance $d$.  We can assign a Gaussian probability distribution centered around $x$ over such rules, so that rules are selected \textbf{probabilistically} for update.
+
+It seems that doing so would not affect the convergence (of the learning algorithm) of the rules, but it would be much more efficient as the probability distribution is \textit{more} concentrated around $x$, so that large numbers of rules need \textit{not} be evaluated (for each state, at each time step).
+
+% Rule 產生了新的結論，但先前選擇的 rule 是否影響新的 context？
+% 其實 rules 本身可以分層。 最高的 rules 選擇下層的某些 rules。  但這只是其中一種做法。
+% 其實如果有某 decision tree 負責 rules 的分流，似乎也仍然是可微的?
+% but if the leafs of the decision tree are SHARED, differentiability may be a problem?
+% the sorting tree can be deterministic... how does that affect differentiability?
+% perhaps the rules at a whole can be regarded as a single function transforming the current state to the next state.  Differentiability would be discussed with respect to this function.
+% What does it mean for differentiability to be broken...?  The total rule function must change infinitesimally per each update... 
+% differentiation is like dy/dx.... when x = the total function...  the question is whether we can always perform x+dx... where dx will not be of finite length
+% the state x will change from step to step....  but that's not a problem...  we care about the 
+
+\begin{equation}
+x_{t+1} = F(x_t; \Theta)
+\end{equation}
+where $\Theta$ are all the parameters that determine the rules, $F$ is the total function aggregating all the rules.  If we vary any one rule parameter, does it change abruptly?  The parameters $\Theta$ include the rules-sorting function $\rho$.
+
+For gradient descent we need to calculate $\nabla_\Theta \mathcal{L}$ where $\Theta$ are all the parameters of rules, and the loss function is defined as the sum of errors over all rules, $\displaystyle \mathcal{L} = \sum_{\text{all rules}} \epsilon^2 $.  Each error usually is given by the difference as compared against a reference value (supervised learning), but in our case such a value is unavailable, instead the objective comes from reinforcement learning, ie, the Hamilton-Jacobi-Bellman equation:  $J(x_{t+1}) = \max_a [ \gamma J(x_t) + R(x_t,a) ] $, where $a$ means \textbf{action}.  In the logic-based setting, an action means applying a logic rule to change the state.  
+
+Policy function:
+\begin{equation}
+\pi: X \times A \rightarrow [0,1]
+\end{equation}
+By the \textbf{Policy Gradient Theorem}, calculation of $\nabla_\Theta J$ translates to calculating $\nabla_\Theta \pi$.
 
 \section{Interestingness}
 
