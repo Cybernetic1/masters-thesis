@@ -192,6 +192,8 @@ which has equivariant structure on both its input and output.  This suggests the
 
 But this is clearly \textbf{non-differentiable}!  
 
+\subsection{Differentiability}
+
 In binary logic a rule either applies or does not apply.  To make the entire set of rules differentiable, rule application must be ``graded''.
 
 So we propose a \textbf{probabilistic} rule-matching mechanism:
@@ -217,13 +219,15 @@ x_{t+1} = \squareF(x_t; \Theta)
 \end{equation}
 where $\Theta$ are all the parameters that determine the rules, $\squareF$ is the total function aggregating all the rules.  If we vary any one rule parameter, does it change abruptly?  The parameters $\Theta$ include the rules-sorting function $\rho$.
 
-For gradient descent we need to calculate $\nabla_\Theta \mathcal{L}$ where $\Theta$ are all the parameters of rules, and the loss function is defined as the sum of errors over all rules, $\displaystyle \mathcal{L} = \sum_{\text{all rules}} \epsilon^2 $.  Each error usually is given by the difference as compared against a reference value (supervised learning), but in our case such a value is unavailable, instead the objective comes from reinforcement learning, ie, the Hamilton-Jacobi-Bellman equation:  $J(x_{t+1}) = \max_a [ \gamma J(x_t) + R(x_t,a) ] $, where $a$ means \textbf{action}.  In the logic-based setting, an action means applying a logic rule to change the state.  
+For gradient descent we need to calculate $\nabla_\Theta \mathcal{L}$ where $\Theta$ are all the parameters of rules, and the loss function is defined as the sum of errors over all rules, $\displaystyle \mathcal{L} = \sum_{\text{all rules}} \epsilon^2 $.  Each error usually is given by the difference as compared against a reference value (supervised learning), but in our case such a value is unavailable, instead the objective comes from reinforcement learning, ie, the Hamilton-Jacobi-Bellman equation:  $\displaystyle J(x_{t+1}) = \max_a [ \gamma J(x_t) + R(x_t,a) ] $, where $a$ means \textbf{action}.  In the logic-based setting, an action means applying a logic rule to change the state.  
 
 Policy function:
 \begin{equation}
 \pi: X \times A \rightarrow [0,1]
 \end{equation}
 By the \textbf{Policy Gradient Theorem}, calculation of $\nabla_\Theta J$ translates to calculating $\nabla_\Theta \pi$.
+
+At each state, the application of all rules results in a list of all available actions.  The differentiability problem may arise from probabilistic rule-matching.  
 
 \section{Interestingness}
 
