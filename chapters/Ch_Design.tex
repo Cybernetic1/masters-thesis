@@ -11,7 +11,7 @@ The following table depicts the main correspondences relevant to our research:
 & $p \in \mathbb{A} $ & $(p \rightarrow q) \in \mathbb{A} $ \\
 \hline
 \textbf{WORLD} & \textbf{states} & \textbf{state transitions} \\
-& $x_t$ & $x_t \stackrel{f}{\mapsto} x_{t+1}$ \\
+& $x_t$ & $x_t \stackrel{\squareF}{\mapsto} x_{t+1}$ \\
 \hline
 \end{tabular}
 \end{equation}
@@ -213,9 +213,9 @@ It seems that doing so would not affect the convergence (of the learning algorit
 % the state x will change from step to step....  but that's not a problem...  we care about the 
 
 \begin{equation}
-x_{t+1} = F(x_t; \Theta)
+x_{t+1} = \squareF(x_t; \Theta)
 \end{equation}
-where $\Theta$ are all the parameters that determine the rules, $F$ is the total function aggregating all the rules.  If we vary any one rule parameter, does it change abruptly?  The parameters $\Theta$ include the rules-sorting function $\rho$.
+where $\Theta$ are all the parameters that determine the rules, $\squareF$ is the total function aggregating all the rules.  If we vary any one rule parameter, does it change abruptly?  The parameters $\Theta$ include the rules-sorting function $\rho$.
 
 For gradient descent we need to calculate $\nabla_\Theta \mathcal{L}$ where $\Theta$ are all the parameters of rules, and the loss function is defined as the sum of errors over all rules, $\displaystyle \mathcal{L} = \sum_{\text{all rules}} \epsilon^2 $.  Each error usually is given by the difference as compared against a reference value (supervised learning), but in our case such a value is unavailable, instead the objective comes from reinforcement learning, ie, the Hamilton-Jacobi-Bellman equation:  $J(x_{t+1}) = \max_a [ \gamma J(x_t) + R(x_t,a) ] $, where $a$ means \textbf{action}.  In the logic-based setting, an action means applying a logic rule to change the state.  
 
