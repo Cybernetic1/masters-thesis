@@ -229,6 +229,10 @@ By the \textbf{Policy Gradient Theorem}, calculation of $\nabla_\Theta J$ transl
 
 At each state, the application of all rules results in a list of all available actions.  The differentiability problem may arise from probabilistic rule-matching.  
 
+\subsection{Logical policy function}
+
+The policy function $\pi: X \times A \rightarrow [0,1]$ should be implemented with logic structure.  The current state would be matched against rules selected by the rules recommender, and then each rule would be applied, resulting in conclusions $Q_i$ each associated with a probabilistic strength $\mathbb{P}(C_i)$.  These are the available actions and their probabilities as given by the policy.  
+
 \section{Interestingness}
 
 This can be implemented implicitly by making the inference algorithm output a probability distribution over all deduced conclusions and then picking the most probable one.

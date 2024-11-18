@@ -4,14 +4,17 @@
 
 At any time the state is a set of facts, ie, pairs of (point $\in$ predicate).
 
-There will be $N_P$ predicates and $N_R$ rules.
+There will be $K$ predicates and $M$ rules.
 
-Each rule is a conjunction of all predicates.  If $N_P$ is large, the rules would be cumbersome.
+Each rule is a conjunction of all predicates.  If $K$ is large, the rules would be cumbersome.
 
-Having a large number of rules, $N_R$, seems not to have a deleterious effect, if the rules recommender is good at its job.
+Having a large number of rules, $M$, seems not to have a deleterious effect, if the rules recommender is good at its job.
 
 Each literal in the rule may be negated, how to handle this?
 
 Each literal contains a predicate and its arguments, which can be constants or variables.
 
 It seems that genetic algorithms would be best suited for this kind of search for rules...  or unless the rules are represented in such a way that they can continuously vary in a differentiable manifold.
+
+For TicTacToe, let's say number of rules = 50.
+
