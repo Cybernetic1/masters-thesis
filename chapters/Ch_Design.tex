@@ -225,6 +225,12 @@ Policy function:
 \end{equation}
 By the \textbf{Policy Gradient Theorem}, calculation of $\nabla_\Theta J$ translates to calculating $\nabla_\Theta \pi$.
 
+In reinforcement learning, in particular the \textbf{Policy Gradient} algorithm, we need to calculate the gradient $\nabla_\phi \mathcal{L}(\phi)$ of a loss function of the form:
+\begin{equation}
+\mathcal{L}(\phi) = \mathbb{E}_{z \sim q_\phi(z)}[ f(z) ] .
+\end{equation}
+The expectation gives an integral $\displaystyle \nabla_\phi \mathcal{L}(\phi) = \nabla_\phi \int dz q_\phi(z) f(z)$ which removes the ``randomness'' and evaluates to a real number.  This allows to be handled by traditional differential calculus.
+
 \section{Interestingness}
 
 This can be implemented implicitly by making the inference algorithm output a probability distribution over all deduced conclusions and then picking the most probable one.
