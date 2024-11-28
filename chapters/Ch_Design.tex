@@ -242,3 +242,26 @@ The policy function $\pi: X \times A \rightarrow [0,1]$ should be implemented wi
 \section{Interestingness}
 
 This can be implemented implicitly by making the inference algorithm output a probability distribution over all deduced conclusions and then picking the most probable one.
+
+\section{Combining logic and reinforcement learning}
+
+This section concerns how to establish the ``link'' from logic to reinforcement learning.
+
+For reinforcement learning, I find it easier to consider Q-learning, ie, learning the utility function $Q(s,a)$, where $s$ = current state and $a$ = action taken in current state.
+
+During forward inference, each logic rule of the form (also known as Horn form):
+\begin{equation}
+	P \wedge Q \wedge R \wedge ... \rightarrow Z
+\end{equation}
+yields a conclusion $Z$.  But the ``truths'' of the premises $P,Q,R,..$ are not binary but fuzzy, because the rules have to be differentiable (this can be implemented by softmax).  Thus each conclusion $Z$ is also fuzzy.  The application of all the rules yields a set of conclusions $\{ Z_i \}$, with their associated fuzzy truth values, which we can normalize as a probability distribution over all available next actions.  This can be regarded as the \textbf{policy function} $\pi(a|s)$, which gives the probability of an action given the current state, $\mathbb{P}(a|s)$.
+
+In Q-learning we need to learn the values $Q(s,a)$.  Given the reward $R$, $Q(s,a)$ satisfies the Bellman equation:
+\begin{equation}
+	Q(s,a) \mathrel{+}= \eta \big( R + \gamma \max_{a'} Q(s',a') - Q(s,a) \big)
+\end{equation}
+where $\eta$ is the learning rate, $\gamma$ is the discount rate of values.
+
+The policy function $\pi(a|s)$ is not exactly the same as $Q(s,a)$, but there is a trick that can relate them, that is the basis of \textbf{Soft-Q learning} (Soft Actor-Critic, SAC):
+\begin{equation}
+	\pi(a|s) \propto \exp Q(s,a)
+\end{equation}
