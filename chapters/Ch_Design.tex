@@ -265,3 +265,14 @@ The policy function $\pi(a|s)$ is not exactly the same as $Q(s,a)$, but there is
 \begin{equation}
 	\pi(a|s) \propto \exp Q(s,a)
 \end{equation}
+
+The situation can be illustrated by the following figure (not a commutative diagram):
+\begin{equation}
+\begin{tikzcd}[column sep=1.5cm, row sep=0.6cm]
+	{} & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering Bellman update} \arrow[d] \\
+	\parbox{1.2cm}{\linespread{-0.5}\selectfont\centering logic rules} \arrow[r] 
+	& \pi(a|s) \arrow[r,shift left=2pt,harpoon,"\log"]
+	& Q(s,a) \arrow[l, shift left=2pt, harpoon, "\exp"] 
+\end{tikzcd}
+\end{equation}
+Logic rules give us $\pi(a|s)$, which in turn gives us $Q(s,a)$, but $Q(s,a)$ is also determined by Bellman update.
