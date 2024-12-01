@@ -276,3 +276,25 @@ The situation can be illustrated by the following figure (not a commutative diag
 \end{tikzcd}
 \end{equation}
 Logic rules give us $\pi(a|s)$, which in turn gives us $Q(s,a)$, but $Q(s,a)$ is also determined by Bellman update.
+
+My solution is:  Logic outputs a finite set of actions, to each action is associated a weight, which we identify as $Q$.  Use Bellman update to train these $Q$ values.  To choose an action, calculate $\pi(a|s)$ as suggested by the Soft-Q method.  This has the effect of \textbf{maximum-entropy} exploration.
+
+\section{Basics of DQN (Deep Q Learning)}
+
+The \textbf{Bellman optimality condition} says that:
+\begin{equation}
+	Q^*_t = \max_{a} \{ R + \gamma Q^*_{t+1} \}
+\end{equation}
+where $()^*$ denotes optimal values.
+
+In the \textbf{Bellman update},
+\begin{equation}
+	Q_t \mathrel{+}= \eta \cdot \mbox{TD-error}
+\end{equation}
+where TD = \textbf{temporal difference} is defined as:
+\begin{equation}
+	\mbox{TD-error} = \overbrace{R + \gamma \max_{a'} Q(s_{t+1},a')}^{\mbox{ideal value}} \overbrace{ - \; Q(s,a)}^{\mbox{current value}} .
+\end{equation}
+So obviously the Bellman update causes the current value of $Q$ to \textbf{converge} to that of the ideal value $Q^*$.
+
+Remember that, in the simplest \textbf{Q-table} method, we apply the Bellman update over Q-table entries.  The \textbf{DQN} approach differs in that, instead of a Q-table, we use a deep neural network in its place.  So the updating of the Q-table now becomes updating the DQN via \textbf{gradient descent}.
