@@ -124,6 +124,8 @@ But we may also avoid the rete algorithm by stacking logical equations into \tex
 
 A fact consists of a point (in subject space) and a predicate that contains it.  The point itself does not suffice because it can belong to various predicates.  
 
+\subsection{How to determine if a rule is satisfied}
+
 To apply a rule, each \textbf{atomic term} in the rule has to be satisfied.  For each predicate $Q()$, this is verified by testing if we have any points among the facts contained in $Q$.
 
 If we have \textsf{father(john, pete)} as a fact then we certainly can satisfy \textsf{father}$(x,y)$.  But we already have the point \textsf{(john, pete)} which may satisfy other predicates $Q(x,y)$.  So our method is slightly more permissive (and thus more powerful) in rules matching.
@@ -132,7 +134,7 @@ How does the rule's RHS generate a new fact?  It should also be a (point, predic
 
 Secondly, the output predicate may not cover the point.
 
-The matching process:  syntactically, we look at each literal in the rule and see if any fact unifies with the literal.  Geometrically, it means taking a point and checking if it lies inside a predicate.  If the fact is a (point, predicate) pair then it is given that the point belongs to the predicate, so it is not necessary to check for membership.  The result is simply taking the point when the predicates match.  But we still need to keep track of which variables the point coordinates are binding to.
+The matching process:  Syntactically, we look at each literal in the rule and see if any fact unifies with the literal.  Geometrically, it means taking a point and checking if it lies inside a predicate.  If the fact is a (point, predicate) pair then it is given that the point belongs to the predicate, so it is not necessary to check for membership.  The result is simply taking the point when the predicates match.  But we still need to keep track of which variables the point coordinates are binding to.
 
 The matching of the second literal will also return a point, but its coordinates would be bound to different dimensions.  
 
@@ -235,15 +237,17 @@ The expectation gives an integral $\displaystyle \nabla_\phi \mathcal{L}(\phi) =
 
 At each state, the application of all rules results in a list of all available actions.  The differentiability problem may arise from probabilistic rule-matching.  
 
-\subsection{Logical policy function}
-
-The policy function $\pi: X \times A \rightarrow [0,1]$ should be implemented with logic structure.  The current state would be matched against rules selected by the rules recommender, and then each rule would be applied, resulting in conclusions $Z_i$ each associated with a probabilistic strength $\mathbb{P}(Z_i)$.  These are the available actions and their probabilities as given by the policy.  
-
 \section{Interestingness}
 
 This can be implemented implicitly by making the inference algorithm output a probability distribution over all deduced conclusions and then picking the most probable one.
 
 \section{Combining logic and reinforcement learning}
+
+\subsection{Logical policy function}
+
+The policy function $\pi: X \times A \rightarrow [0,1]$ should be implemented with logic structure.  The current state would be matched against rules selected by the rules recommender, and then each rule would be applied, resulting in conclusions $Z_i$ each associated with a probabilistic strength $\mathbb{P}(Z_i)$.  These are the available actions and their probabilities as given by the policy.
+
+\vspace{1cm} \hrule \vspace{1cm}
 
 This section concerns how to establish the ``link'' from logic to reinforcement learning.
 
