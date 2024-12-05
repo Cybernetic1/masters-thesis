@@ -155,7 +155,7 @@ Each logic rule may vary in the following ways:
 
 For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ v_1, v_2, ... , v_n \}$.
 
-In fact, each argument is $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.
+In fact, each predicate has as its arguments $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.
 
 There are two senses of the word ``cylindrify.''  Think for example the change from (John, Mary) to ($x$, Mary) as in ``everyone loves Mary.''  In the first sense, the point John on the $x$-coordinate becomes ``everyone,'' ie, the entire $x$-dimension becomes a cylinder.  In the second sense, a cylinder appears on the $y$-axis at the position of Mary:
 \begin{equation}
@@ -164,6 +164,8 @@ There are two senses of the word ``cylindrify.''  Think for example the change f
 In the above example, we have two copies of the Subject Space $X$, each is 1-dimensional.
 
 The dimension $n$ is not just the number of variables appearing in one predicate in a rule, but the total number of variables appearing in a rule.
+
+Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, v_2, ... v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification.
 
 We suggest the following values (for a general human-level intelligent agent):
 \begin{equation}
