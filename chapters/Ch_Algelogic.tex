@@ -165,7 +165,15 @@ In the above example, we have two copies of the Subject Space $X$, each is 1-dim
 
 The dimension $n$ is not just the number of variables appearing in one predicate in a rule, but the total number of variables appearing in a rule.
 
-Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, v_2, ... v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification.
+\subsubsection{How to deal with variables in rules}
+
+( Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, v_2, ... v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification? )
+
+Again drawing inspiration from Halmos' algebraic logic.  A monadic logic deals with predicates as $X \rightarrow \Omega$, whereas in polyadic logic one has $X^I \rightarrow \Omega$ where $I$ is an index set.  The elements of $I$ are variables even though the elements themselves do not really change.  This creates $I$ copies of the Subject Space $X$ \footnote{Note that $(I \rightarrow X) \rightarrow \Omega$ is not isomorphic to $I \rightarrow (X \rightarrow \Omega)$.}.  For example if $I = \{ 1,2,3,4 \}$ would provide 4 variables or ``slots'' for a rule to use.  A rule such as $\mathsf{father}(X,Y) \wedge \mathsf{father}(Y,Z) \rightarrow \mathsf{grandfather}(X,Z)$ requires 3 variables: $X, Y, Z$.
+
+Solution:  Suppose we have a predicate of 2 arguments, eg. $\mathsf{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that 
+
+\vspace{1cm} \hrule \vspace{1cm}
 
 We suggest the following values (for a general human-level intelligent agent):
 \begin{equation}
