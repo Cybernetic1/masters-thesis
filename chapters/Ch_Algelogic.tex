@@ -144,11 +144,27 @@ RHS:  The bound variables (in various dimensions) need to be projected to the ou
 
 Analyzing a more-detailed example:
 \begin{equation}
-	\mathsf{father}(X,Y) \wedge \mathsf{father}(Y,Z) \rightarrow \mathsf{grand\hbox{-}father}(X,Z)
+	\mathsf{father}(X_1,X_2) \wedge \mathsf{father}(X_2,X_3) \rightarrow \mathsf{grand\hbox{-}father}(X_1,X_3)
 \end{equation}
-The first predicate converges to dimensions $(\#1,\#2)$, the second predicate converges to dimensions $(\#2,\#3)$.  The output predicate converges to dimensions $(\#1,\#3)$.  These dimensions are discrete numbers and thus not differentiable.  To learn them by machine-learning, one way is to make them into stochastic actions and learn their probability distribution.
+where I have used the symbol $X$ with subscripts to denote variables, as a reminder that each variable is really a copy of our Subject Space $X$.
 
+% The first predicate converges to dimensions $(\#1,\#2)$, the second predicate converges to dimensions $(\#2,\#3)$.  The output predicate converges to dimensions $(\#1,\#3)$.  These dimensions are discrete numbers and thus not differentiable.  To learn them by machine-learning, one way is to make them into stochastic actions and learn their probability distribution.
 
+It is perhaps illuminating to rewrite the logic rule this way:
+\begin{equation}
+	\mathsf{father}(X^I) \wedge \mathsf{father}(X^I) \rightarrow \mathsf{grand\hbox{-}father}(X^I)
+\end{equation}
+where $I$ is at least $\{ 1,2,3 \}$.
+
+In my mind, the mental picture is like this:
+\begin{equation}
+	\mathsf{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables1.png}}}) 
+	\wedge 
+	\mathsf{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables2.png}}})
+	\rightarrow
+	\mathsf{grand\hbox{-}father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables3.png}}})
+\end{equation}
+where the blue bars represent fuzzy-values, some kind of relative proportion of variables, such that the overall construction would be differentiable.
 
 \section{Computer representation of rules}
 
