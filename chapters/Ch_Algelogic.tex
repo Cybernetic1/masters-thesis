@@ -142,11 +142,19 @@ The binding of coordinates would be the basis of verifying the rule LHS.
 
 RHS:  The bound variables (in various dimensions) need to be projected to the output space.  It may or may not be covered by the output predicate.  If not, the rule does \textit{not} apply.  This is in accord with the principle that rules should not change during inference.
 
-Analyzing a more-detailed example:
+\subsection{How to handle variables in rules}
+
+( Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, ..., v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification? )
+
+Again drawing inspiration from Halmos' algebraic logic.  A monadic logic deals with predicates as $X \rightarrow \Omega$, whereas in polyadic logic one has $X^I \rightarrow \Omega$ where $I$ is an index set.  The elements of $I$ are variables even though the elements themselves do not really change.  This creates $I$ copies of the Subject Space $X$ \footnote{Note that $(I \rightarrow X) \rightarrow \Omega$ is not isomorphic to $I \rightarrow (X \rightarrow \Omega)$.}.  For example if $I = \{ 1,2,3,4 \}$ would provide 4 variables or ``slots'' for a rule to use.  A rule such as $\mathsf{father}(X,Y) \wedge \mathsf{father}(Y,Z) \rightarrow \mathsf{grandfather}(X,Z)$ requires 3 variables: $X, Y, Z$.
+
+% Solution:  Suppose we have a predicate of 2 arguments, eg. $\mathsf{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that... 
+
+Analyzing this example in more details:
 \begin{equation}
 	\mathsf{father}(X_1,X_2) \wedge \mathsf{father}(X_2,X_3) \rightarrow \mathsf{grand\hbox{-}father}(X_1,X_3)
 \end{equation}
-where I have used the symbol $X$ with subscripts to denote variables, as a reminder that each variable is really a copy of our Subject Space $X$.
+where I have used the symbol $X$ with subscripts to denote variables, as a reminder that each variable is really a \textbf{copy} of our Subject Space $X$.
 
 % The first predicate converges to dimensions $(\#1,\#2)$, the second predicate converges to dimensions $(\#2,\#3)$.  The output predicate converges to dimensions $(\#1,\#3)$.  These dimensions are discrete numbers and thus not differentiable.  To learn them by machine-learning, one way is to make them into stochastic actions and learn their probability distribution.
 
@@ -164,7 +172,11 @@ In my mind, the mental picture is like this:
 	\rightarrow
 	\mathsf{grand\hbox{-}father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables3.png}}})
 \end{equation}
-where the blue bars represent fuzzy-values, some kind of relative proportion of variables, such that the overall construction would be differentiable.
+where the blue bars represent fuzzy-values, some kind of relative ``proportion'' of variables, such that the overall construction would be differentiable. ( Note that $X_1$ does not necessarily map to a leftmost dimension, it could map to any slot further to the right. )
+
+The solution I found is quite natural:  each \textbf{argument} of a predicate would be associated with a \textbf{softmax} over the index set $I$, which selects 1 element out of $I$.  The softmax assigns, to each $i \in I$, a weight $w_i \in \mathbb{R}$.  Then we can make copies of $X$ into $X^I$ as $\{ w_1 X_1, ..., w_n X_n \}$.  But this method assumes that the Subject Space $X$ has \textbf{vector space structure} and is amenable to scalar multiplication.  As I have argued in a blog article, the space of ``word embedding'' is actually a \textbf{metric space} rather than vector space.
+
+A better solution is to associate the weight to that argument of the predicate such that the resulting \textbf{true value} of that predicate would be \textbf{weakened}.
 
 \section{Computer representation of rules}
 
@@ -188,14 +200,6 @@ There are two senses of the word ``cylindrify.''  Think for example the change f
 In the above example, we have two copies of the Subject Space $X$, each is 1-dimensional.
 
 The dimension $n$ is not just the number of variables appearing in one predicate in a rule, but the total number of variables appearing in a rule.
-
-\subsubsection{How to deal with variables in rules}
-
-( Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, v_2, ... v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification? )
-
-Again drawing inspiration from Halmos' algebraic logic.  A monadic logic deals with predicates as $X \rightarrow \Omega$, whereas in polyadic logic one has $X^I \rightarrow \Omega$ where $I$ is an index set.  The elements of $I$ are variables even though the elements themselves do not really change.  This creates $I$ copies of the Subject Space $X$ \footnote{Note that $(I \rightarrow X) \rightarrow \Omega$ is not isomorphic to $I \rightarrow (X \rightarrow \Omega)$.}.  For example if $I = \{ 1,2,3,4 \}$ would provide 4 variables or ``slots'' for a rule to use.  A rule such as $\mathsf{father}(X,Y) \wedge \mathsf{father}(Y,Z) \rightarrow \mathsf{grandfather}(X,Z)$ requires 3 variables: $X, Y, Z$.
-
-Solution:  Suppose we have a predicate of 2 arguments, eg. $\mathsf{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that 
 
 \vspace{1cm} \hrule \vspace{1cm}
 
