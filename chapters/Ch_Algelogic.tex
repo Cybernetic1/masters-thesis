@@ -176,7 +176,7 @@ where the blue bars represent fuzzy-values, some kind of relative ``proportion''
 
 The solution I found is quite natural:  each \textbf{argument} of a predicate would be associated with a \textbf{softmax} over the index set $I$, which selects 1 element out of $I$.  The softmax assigns, to each $i \in I$, a weight $w_i \in \mathbb{R}$.  Then we can make copies of $X$ into $X^I$ as $\{ w_1 X_1, ..., w_n X_n \}$.  But this method assumes that the Subject Space $X$ has \textbf{vector space structure} and is amenable to scalar multiplication.  As I have argued in a blog article, the space of ``word embedding'' is actually a \textbf{metric space} rather than vector space.
 
-A better solution is to associate the weight to that argument of the predicate such that the resulting \textbf{true value} of that predicate would be \textbf{weakened}.
+A better solution is to associate the weight to that argument of the predicate such that the resulting \textbf{true value} of that predicate would be \textbf{weakened}.  The truth value of a predicate $P$ is evaluated by sending a point $(a,b)$ as input to the neural network representing $P$.  Its output is a real number normalized $\in [ 0,1 ]$ and interpreted as a fuzzy truth-value.
 
 \section{Computer representation of rules}
 
@@ -189,7 +189,7 @@ Each logic rule may vary in the following ways:
 \end{itemize}
 \#1 and \#2 can be fixed.
 
-For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ v_1, v_2, ... , v_n \}$.
+For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ X_1, X_2, ... , X_n \}$.
 
 In fact, each predicate has as its arguments $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.
 
