@@ -176,7 +176,55 @@ where the blue bars represent fuzzy-values, some kind of relative ``proportion''
 
 The solution I found is quite natural:  each \textbf{argument} of a predicate would be associated with a \textbf{softmax} over the index set $I$, which selects 1 element out of $I$.  The softmax assigns, to each $i \in I$, a weight $w_i \in \mathbb{R}$.  Then we can make copies of $X$ into $X^I$ as $\{ w_1 X_1, ..., w_n X_n \}$.  But this method assumes that the Subject Space $X$ has \textbf{vector space structure} and is amenable to scalar multiplication.  As I have argued in a blog article, the space of ``word embedding'' is actually a \textbf{metric space} rather than vector space.
 
-A better solution is to associate the weight to that argument of the predicate such that the resulting \textbf{true value} of that predicate would be \textbf{weakened}.  The truth value of a predicate $P$ is evaluated by sending a point $(a,b)$ as input to the neural network representing $P$.  Its output is a real number normalized $\in [ 0,1 ]$ and interpreted as a fuzzy truth-value.
+A better solution is to associate the weight to that argument of the predicate such that the resulting \textbf{true value} of that predicate would be \textbf{weakened}.  The truth value of a predicate $P$ is evaluated by sending a point $(a,b)$ as input to a \textbf{neural network} representing $P$.  Its output is a real number normalized $\in [ 0,1 ]$ and interpreted as a fuzzy truth-value.
+
+The training of the neural network for predicate $P$ occurs in $X^2$ if the arity of the predicate is 2.  This has nothing to do with $X^I$ as the set $I$ of variables are only involved in logic rules.
+
+Now to evaluate a rule:  Each predicate, such as $\mathsf{father(\_,\_)}$, is matched against some points, such as $(a,b)$.  The neural network returns a TV (truth value) independent of the variable space $X^I$.  But we need to put the point $(a,b)$ into $X^I$ via the \textbf{Softmax} selector.  This is repeated for all predicates on the LHS or ``head'' of the rule.  Then the truth values will determine if the rule is satisfied or not.  If yes, we will output a predicate such as $\mathsf{grand\hbox{-}father}(X_1, X_3)$.  Now we need to go back to $X^I$ to retrieve the point corresponding to the variables $(X_1, X_3)$.
+
+For each output ``slot'' in $\hat{X}^I$, we store the sum of vectors from all predicates on the LHS of a rule:
+\begin{equation}
+	\hat{x}^k \mathrel{:}= \underset{\text{predicates}}{\forall i \in} \; \underset{\text{arguments}}{\forall j \in} \left\langle \mathrm{soft}\max_{ij} w_{ij}^k \; , \; x_{ij} \right\rangle .
+\end{equation}
+Note that $ij$ is treated as one set of indices, so $x_{ij} = ( x_{11}, x_{12}, x_{13}, x_{21}, x_{22}, x_{23} )$ say, and $x_{ij}^\top$ is a simple column vector.
+
+The situation can be illustrated as follows (arguments with negligible weights are shown as $\bullet$'s):
+\begin{align}
+	\nonumber
+	& \qquad \qquad \tikzmark{Y1}
+	\setlength{\fboxrule}{3pt}
+	\fcolorbox{cyan!70}{white}{$\hat{x}^1$}
+	\qquad
+	\tikzmark{Y2} \fcolorbox{cyan!70}{white}{$\hat{x}^2$}
+	\qquad
+	\tikzmark{Y3} \fcolorbox{cyan!70}{white}{$\hat{x}^3$} \\
+	& \qquad w_{ij}^k \\
+	& \nonumber \\
+	& \mathsf{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \bullet_{13}) \wedge
+	\mathsf{father}(\tikzmark{X21} \bullet_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \mathsf{grand\hbox{-}father}(x_1,\bullet_2,x_3)
+	\nonumber
+\begin{tikzpicture}[remember picture,overlay]
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X12) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X13) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X21) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X22) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X12) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X13) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X21) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X22) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X12) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X13) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X21) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X22) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
+\end{tikzpicture}
+\end{align}
+This structure is reminiscent of the Transformer's \textbf{Self-Attention}.  What we're doing here is to move variables around;  this implies that the Transformer is capable of moving tokens around.  The syntactic manipulation ability of Transformers has been corroborated by others' research [cite].
 
 \section{Computer representation of rules}
 
