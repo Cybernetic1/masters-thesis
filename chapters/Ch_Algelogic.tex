@@ -224,7 +224,11 @@ The situation can be illustrated as follows (arguments with negligible weights a
 \draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
 \end{tikzpicture}
 \end{align}
-This structure is reminiscent of the Transformer's \textbf{Self-Attention}.  What we're doing here is to move variables around;  this suggests that the Transformer is also capable of moving tokens around.  The syntactic manipulation ability of Transformers has been corroborated by others' research [cite].
+This structure is reminiscent of the Transformer's \textbf{Self-Attention}:
+\begin{equation}
+	\text{Attention}(\mathbf{Q,K,V}) = \text{soft}\max  \frac{\langle \mathbf{Q,K} \rangle}{\sqrt{d_k}} \mathbf{V}
+\end{equation}
+What we're doing here is to move variables around;  this suggests that the Transformer is also capable of moving tokens around.  The syntactic manipulation ability of Transformers has been corroborated by others' research [cite].
 
 \section{Computer representation of rules}
 
