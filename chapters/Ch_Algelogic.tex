@@ -144,17 +144,17 @@ RHS:  The bound variables (in various dimensions) need to be projected to the ou
 
 \subsection{How to handle variables in rules}
 
-( Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, ..., v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification? )
+% Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, ..., v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification?
 
-Again drawing inspiration from Halmos' algebraic logic.  A monadic logic deals with predicates as $X \rightarrow \Omega$, whereas in polyadic logic one has $X^I \rightarrow \Omega$ where $I$ is an index set.  The elements of $I$ are variables even though the elements themselves do not really change.  This creates $I$ copies of the Subject Space $X$ \footnote{Note that $(I \rightarrow X) \rightarrow \Omega$ is not isomorphic to $I \rightarrow (X \rightarrow \Omega)$.}.  For example if $I = \{ 1,2,3,4 \}$ would provide 4 variables or ``slots'' for a rule to use.  A rule such as $\mathsf{father}(X,Y) \wedge \mathsf{father}(Y,Z) \rightarrow \mathsf{grandfather}(X,Z)$ requires 3 variables: $X, Y, Z$.
+Again drawing inspiration from Halmos' algebraic logic.  A monadic logic deals with predicates as $X \rightarrow \Omega$, whereas in polyadic logic one has $X^I \rightarrow \Omega$ where $I$ is an index set.  The elements of $I$ are \textbf{variables} even though they do not really change.  $X^I$ creates $I$ copies of the Subject Space $X$. Note that $(I \rightarrow X) \rightarrow \Omega$ is not isomorphic to $I \rightarrow (X \rightarrow \Omega)$.
 
 % Solution:  Suppose we have a predicate of 2 arguments, eg. $\mathsf{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that... 
 
-Analyzing this example in more details:
+For example $I = \{ 1,2,3,4 \}$ would provide 4 variables or ``slots'' for a rule to use.  A rule such as:
 \begin{equation}
 	\mathsf{father}(X_1,X_2) \wedge \mathsf{father}(X_2,X_3) \rightarrow \mathsf{grand\hbox{-}father}(X_1,X_3)
 \end{equation}
-where I have used the symbol $X$ with subscripts to denote variables, as a reminder that each variable is really a \textbf{copy} of our Subject Space $X$.
+uses 3 variables: $X_1, X_2, X_3$.  I have used the symbol $X$ with subscripts to denote variables, as a reminder that each variable is really a \textbf{copy} of our Subject Space $X$.
 
 % The first predicate converges to dimensions $(\#1,\#2)$, the second predicate converges to dimensions $(\#2,\#3)$.  The output predicate converges to dimensions $(\#1,\#3)$.  These dimensions are discrete numbers and thus not differentiable.  To learn them by machine-learning, one way is to make them into stochastic actions and learn their probability distribution.
 
@@ -164,7 +164,7 @@ It is perhaps illuminating to rewrite the logic rule this way:
 \end{equation}
 where $I$ is at least $\{ 1,2,3 \}$.
 
-In my mind, the mental picture is like this:
+In my mind, I had this mental picture:
 \begin{equation}
 	\mathsf{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables1.png}}}) 
 	\wedge 
@@ -172,37 +172,29 @@ In my mind, the mental picture is like this:
 	\rightarrow
 	\mathsf{grand\hbox{-}father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables3.png}}})
 \end{equation}
-where the blue bars represent fuzzy-values, some kind of relative ``proportion'' of variables, such that the overall construction would be differentiable. ( Note that $X_1$ does not necessarily map to a leftmost dimension, it could map to any slot further to the right. )
+where the blue bars represent some kind of relative ``proportion'' of variables, such that the overall construction could be \textbf{differentiable}.
 
-The solution I found is quite natural:  each \textbf{argument} of a predicate would be associated with a \textbf{softmax} over the index set $I$, which selects 1 element out of $I$.  The softmax assigns, to each $i \in I$, a weight $w_i \in \mathbb{R}$.  Then we can make copies of $X$ into $X^I$ as $\{ w_1 X_1, ..., w_n X_n \}$.  But this method assumes that the Subject Space $X$ has \textbf{vector space structure} and is amenable to scalar multiplication.  As I have argued in a blog article, the space of ``word embedding'' is actually a \textbf{metric space} rather than vector space.
+% Each \textbf{argument} of a predicate would be associated with a \textbf{softmax} over the index set $I$, which selects one element out of $I$.  The softmax assigns, to each $i \in I$, a weight $w_i \in \mathbb{R}$.
 
-A better solution is to associate the weight to that argument of the predicate such that the resulting \textbf{true value} of that predicate would be \textbf{weakened}.  The truth value of a predicate $P$ is evaluated by sending a point $(a,b)$ as input to a \textbf{neural network} representing $P$.  Its output is a real number normalized $\in [ 0,1 ]$ and interpreted as a fuzzy truth-value.
+% WRONG:  Then we can make copies of $X$ into $X^I$ as $\{ w_1 X_1, ..., w_n X_n \}$.  But this method assumes that the Subject Space $X$ has \textbf{vector space structure} and is amenable to scalar multiplication.  As I have argued in a blog article, the space of ``word embedding'' is actually a \textbf{metric space} rather than vector space.
 
-The training of the neural network for predicate $P$ occurs in $X^2$ if the arity of the predicate is 2.  This has nothing to do with $X^I$ as the set $I$ of variables are only involved in logic rules.
+% WRONG: A better solution is to associate the weight to that argument of the predicate such that the resulting \textbf{true value} of that predicate would be \textbf{weakened}.  The truth value of a predicate $P$ is evaluated by sending a point $(a,b)$ as input to a \textbf{neural network} representing $P$.  Its output is a real number normalized $\in [ 0,1 ]$ and interpreted as fuzzy truth-value.
 
-Now to evaluate a rule:  Each predicate, such as $\mathsf{father(\_,\_)}$, is matched against some points, such as $(a,b)$.  The neural network returns a TV (truth value) independent of the variable space $X^I$.  But we need to put the point $(a,b)$ into $X^I$ via the \textbf{Softmax} selector.  This is repeated for all predicates on the LHS or ``head'' of the rule.  Then the truth values will determine if the rule is satisfied or not.  If yes, we will output a predicate such as $\mathsf{grand\hbox{-}father}(X_1, X_3)$.  Now we need to go back to $X^I$ to retrieve the point corresponding to the variables $(X_1, X_3)$.
-
-For each output ``slot'' in $\hat{X}^I$, we store the sum of vectors from all predicates on the LHS of a rule:
-\begin{equation}
-	\hat{x}^k \mathrel{:}= \underset{\text{predicates}}{\forall i \in} \; \underset{\text{arguments}}{\forall j \in} \left\langle \mathrm{soft}\max_{ij} w_{ij}^k \; , \; x_{ij} \right\rangle .
-\end{equation}
-Note that $ij$ is treated as one set of indices, so $x_{ij} = ( x_{11}, x_{12}, x_{13}, x_{21}, x_{22}, x_{23} )$ say, and $x_{ij}^\top$ is a simple column vector.
-
-The situation can be illustrated as follows (arguments with negligible weights are shown as $\bullet$'s):
+The eventual implementation is quite natural:
 \begin{align}
-	\nonumber
-	& \qquad \qquad \tikzmark{Y1}
-	\setlength{\fboxrule}{3pt}
-	\fcolorbox{cyan!70}{white}{$\hat{x}^1$}
-	\qquad
-	\tikzmark{Y2} \fcolorbox{cyan!70}{white}{$\hat{x}^2$}
-	\qquad
-	\tikzmark{Y3} \fcolorbox{cyan!70}{white}{$\hat{x}^3$} \\
-	& \qquad w_{ij}^k \\
-	& \nonumber \\
-	& \mathsf{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \bullet_{13}) \wedge
-	\mathsf{father}(\tikzmark{X21} \bullet_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \mathsf{grand\hbox{-}father}(x_1,\bullet_2,x_3)
-	\nonumber
+\nonumber
+& \qquad \qquad \tikzmark{Y1}
+\setlength{\fboxrule}{3pt}
+\fcolorbox{cyan!70}{white}{$\hat{x}^1$}
+\qquad
+\tikzmark{Y2} \fcolorbox{cyan!70}{white}{$\hat{x}^2$}
+\qquad
+\tikzmark{Y3} \fcolorbox{cyan!70}{white}{$\hat{x}^3$} \\
+& \qquad w_{ij}^k \\
+& \nonumber \\
+& \mathsf{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \bullet_{13}) \wedge
+\mathsf{father}(\tikzmark{X21} \bullet_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \mathsf{grand\hbox{-}father}(x_1,\bullet_2,x_3)
+\nonumber
 \begin{tikzpicture}[remember picture,overlay]
 \draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
 \draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X12) +(7pt,12pt) $);
@@ -224,11 +216,30 @@ The situation can be illustrated as follows (arguments with negligible weights a
 \draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
 \end{tikzpicture}
 \end{align}
-This structure is reminiscent of the Transformer's \textbf{Self-Attention}:
+Each weight represents how ``strong'' an argument (lower row) occupies a variable slot (upper row).  \textbf{Softmax} normalizes the weights so that one of them would be most prominent, ie. the selected one.  Every argument can potentially appear in every variable slot, thus the bipartite graph is fully connected.
+
+The resulting formula is this:  Each output slot $\hat{x}^k \in \hat{X}^I$ contains a \textbf{sum} of vectors from all arguments of all predicates on the left hand side of a rule:
 \begin{equation}
-	\text{Attention}(\mathbf{Q,K,V}) = \text{soft}\max  \frac{\langle \mathbf{Q,K} \rangle}{\sqrt{d_k}} \mathbf{V}
+\hat{x}^k \mathrel{:}= \underset{\text{predicates}}{\forall i \in} \; \underset{\text{arguments}}{\forall j \in} \left\langle \mathrm{soft}\max_{ij} w_{ij}^k \; , \; x_{ij} \right\rangle .
 \end{equation}
-What we're doing here is to move variables around;  this suggests that the Transformer is also capable of moving tokens around.  The syntactic manipulation ability of Transformers has been corroborated by others' research [cite].
+Note that $ij$ is treated as one set of indices, so $x_{ij} = ( x_{11}, x_{12}, x_{13}, x_{21}, x_{22}, x_{23} )$ say, and $x_{ij}^\top$ is a simple column vector.
+
+In the above method, the copying of a vector is not ``pure'' but may be contaminated by residuals of other vectors.  This is tolerable, as the vector embedding of tokens can allow for small perturbations.
+
+The structure of our formula is reminiscent of the Transformer's \textbf{Self-Attention}:
+\begin{equation}
+\text{Attention}(\mathbf{Q,K,V}) = \text{soft}\max  \frac{\langle \mathbf{Q,K} \rangle}{\sqrt{d_k}} \mathbf{V}
+\end{equation}
+What we're doing here is to move variables around;  this suggests that the Transformer is also capable of moving \textbf{tokens} around.  The syntactic manipulation ability of Transformers has been corroborated by other researchers [cite].
+
+For comparison, this is the neural string diagram for the traditional Self-Attention:
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.7]{Attention-string-diagram.png}}}
+\end{equation}
+
+The training of the neural network for predicate $P$ occurs in $X^2$ if the arity of the predicate is 2.  This has nothing to do with $X^I$ as the set $I$ of variables are only involved in logic rules.
+
+To evaluate a rule:  Each predicate, such as $\mathsf{father(\_,\_)}$, is matched against some points, such as $(a,b)$.  The neural network returns a TV (truth value) independent of the variable space $X^I$.  But we need to put the point $(a,b)$ into $X^I$ via the \textbf{Softmax} selector.  This is repeated for all predicates on the LHS or ``head'' of the rule.  Then the truth values will determine if the rule is satisfied or not.  If yes, we will output a predicate such as $\mathsf{grand\hbox{-}father}(X_1, X_3)$.  Now we go back to $X^I$ to retrieve the point corresponding to the variables $(X_1, X_3)$.
 
 \section{Computer representation of rules}
 
@@ -241,9 +252,9 @@ Each logic rule may vary in the following ways:
 \end{itemize}
 \#1 and \#2 can be fixed.
 
-For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ X_1, X_2, ... , X_n \}$.
+For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  % But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ X_1, X_2, ... , X_n \}$.
 
-In fact, each predicate has as its arguments $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.
+Each predicate has as its arguments $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.
 
 There are two senses of the word ``cylindrify.''  Think for example the change from (John, Mary) to ($x$, Mary) as in ``everyone loves Mary.''  In the first sense, the point John on the $x$-coordinate becomes ``everyone,'' ie, the entire $x$-dimension becomes a cylinder.  In the second sense, a cylinder appears on the $y$-axis at the position of Mary:
 \begin{equation}
