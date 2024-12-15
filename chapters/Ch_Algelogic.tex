@@ -142,7 +142,7 @@ The binding of coordinates would be the basis of verifying the rule LHS.
 
 RHS:  The bound variables (in various dimensions) need to be projected to the output space.  It may or may not be covered by the output predicate.  If not, the rule does \textit{not} apply.  This is in accord with the principle that rules should not change during inference.
 
-\subsection{How to handle variables in rules}
+\subsection{Handling variables in rules}
 
 % Besides $(p, \gamma)$ we seem to need another parameter, the variable number specifying which of $\{ v_1, ..., v_n \}$ is referenced in a rule's argument.  This seems to be a parameter independent of $(p, \gamma)$.  But it seems irrelevant if there is no cylindrification?
 
@@ -232,7 +232,7 @@ The structure of our formula is reminiscent of the Transformer's \textbf{Self-At
 \end{equation}
 What we're doing here is to move variables around;  this suggests that the Transformer is also capable of moving \textbf{tokens} around.  The syntactic manipulation ability of Transformers has been corroborated by other researchers [cite].
 
-For comparison, this is the neural string diagram for the traditional Self-Attention:
+For comparison, this is the \textbf{neural string diagram} for the traditional Self-Attention:
 \begin{equation}
 \vcenter{\hbox{\includegraphics[scale=0.7]{Attention-string-diagram.png}}}
 \end{equation}
@@ -250,19 +250,22 @@ Each logic rule may vary in the following ways:
 	\item each argument may be a logic variable or logic constant
 	\item which specific logic variable or constant.
 \end{itemize}
-\#1 and \#2 can be fixed.
+The numbers in \#1 and \#2 can be fixed.
 
-For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  % But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ X_1, X_2, ... , X_n \}$.
+For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point (or coordinates) in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  % But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ X_1, X_2, ... , X_n \}$.
 
 Each predicate has as its arguments $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.
-
-There are two senses of the word ``cylindrify.''  Think for example the change from (John, Mary) to ($x$, Mary) as in ``everyone loves Mary.''  In the first sense, the point John on the $x$-coordinate becomes ``everyone,'' ie, the entire $x$-dimension becomes a cylinder.  In the second sense, a cylinder appears on the $y$-axis at the position of Mary:
+%There are two senses of the word ``cylindrify.''  Think for example the change from (John, Mary) to ($x$, Mary) as in ``everyone loves Mary.''  In the first sense, the point John on the $x$-coordinate becomes ``everyone,'' ie, the entire $x$-dimension becomes a cylinder.  In the second sense, a cylinder appears on the $y$-axis at the position of Mary:
 \begin{equation}
 \vcenter{\hbox{\includegraphics[scale=0.7]{cylindrify-example.png}}}
 \end{equation}
 In the above example, we have two copies of the Subject Space $X$, each is 1-dimensional.
 
-The dimension $n$ is not just the number of variables appearing in one predicate in a rule, but the total number of variables appearing in a rule.
+During rule matching, suppose a point $p = (a,b)$ is presented from a proposition $P(p) = P(a,b)$ in the state $X$.  This is matched against a term $Q(X,Y)$ in the rule.  The rule-matching process seems costly, which suggests we may need to re-formulate a neural-network version of the \textbf{Rete algorithm} -- but such an algorithm would not be differentiable.  In fact, differentiability dictates that all rules must participate in matching at all times (or at least probabilistically with non-zero probabilities).
+
+Anyway, the coordinate $a$ needs to be matched against the argument $X_1$, which may be a variable or a constant.  Denote the constant part of $X_1$ as $C_1$, so we try the matching $a \stackrel{?}{=} \gamma(C_1)$, where $\gamma$ is the cylindrification, a radial basis function.  This returns the truth value of the match.  At the same time, $a$ would be copied into the variable slot $X_1$ for substitution processing, independently.  This is OK, as the result will have a low TV if matching fails.
+
+% The dimension $n$ is not just the number of variables appearing in one predicate in a rule, but the total number of variables appearing in a rule.
 
 \vspace{1cm} \hrule \vspace{1cm}
 
