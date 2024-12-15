@@ -2,7 +2,17 @@
 
 \section{Paul Halmos' algebraic logic}
 
-Every Boolean algebra $\mathbb{A}$ is isomorphic to the set of all continuous functions from $X$ into $\mathbb{O}$, where $X$ is the dual space of the algebra $\mathbb{A}$, and $\mathbb{O}$ is the Boolean algebra with 2 elements.  If there is a homomorphism $f$ between Boolean algebras $\mathbb{A} \rightarrow \mathbb{B}$ then there is a dual morphism $f^*$ between their dual spaces $Y \rightarrow X$:
+The essence of Halmos' approach to algebraic logic may be explained by this diagram:
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.6]{Halmos-nutshell.png}}}
+\end{equation}
+I coined the term ``Subject Space'' to refer to the space of \textbf{subjects} referred to by predicates.  For example the predicate $\mathsf{mortal}(\_)$ applies to subjects such as $\mathsf{Socrates}$ and $\mathsf{Plato}$ but does not apply to the subject $\mathsf{Zeus}$.
+
+We all know that propositional logic is isomorphic to the Boolean algebra of sets (Stone's duality theorem).  This is the basis of treating logic as algebra.  But the most sticky point of algebraizing a logic is the treatment of \textbf{predicates}.  Halmos observed that one can form \textbf{propositional functions} from a Subject Space $X$ to a Boolean algebra, and the resulting set of functions would still be a Boolean algebra.  In the above diagram we can see a function mapping subjects to the set $\{ \top, \bot \}$ which is the minimal Boolean algebra $O$, containing only 2 elements, true and false.
+
+The target domain can be a more complex Boolean algebra, as in $X \rightarrow A$.  For example, if Achilles was Zeus's son, he would also be immortal.  So in the proposition space $A$, there would be an implication arrow $\mathsf{immortal}(\mathsf{Zeus}) \rightarrow \mathsf{immortal}(\mathsf{Achilles})$.  Note that the space $A$ contains points which are just propositions, we cannot access their internal structure.  Anyway, I find that $O = \{ \top, \bot \}$ suffices for our purposes, and we don't need the richer structure of $A$.
+
+More technically, we have the following duality.  Every Boolean algebra $\mathbb{A}$ is isomorphic to the set of all continuous functions from $X$ into $\mathbb{O}$, where $X$ is the dual space of the algebra $\mathbb{A}$, and $\mathbb{O}$ is the Boolean algebra with 2 elements.  If there is a homomorphism $f$ between Boolean algebras $\mathbb{A} \rightarrow \mathbb{B}$ then there is a dual morphism $f^*$ between their dual spaces $Y \rightarrow X$:
 \begin{equation}
 \begin{tikzcd}[column sep=3cm, row sep=0.6cm]
 \mathbb{A} \arrow[r,"f"] \arrow[d,shift left=2,phantom,"\cong"{anchor=south,rotate=90}] & \mathbb{B} \arrow[d,shift left=2,phantom,"\cong"{anchor=south,rotate=90}] \\
