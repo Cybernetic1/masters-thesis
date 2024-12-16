@@ -1,3 +1,21 @@
 \chapter{Introduction}\label{chap:introduction}
 
+Our main contribution is the re-formulation of old-fashioned logic-based AI based on the new technique of deep learning.
+
+Deep learning is truly revolutionary for a single reason:  It learns much faster.  This allows to handle huge datasets which were perviously out of consideration, and crucially, common-sense reasoning by its nature has to be training on massive datasets.  The reason why we're now seeing machines with human-comparable intelligence owes to this feat.  
+
+Why is deep learning so highly efficient?  It seems to achieve this by operating in a ``continuous'' domain (by gradient descent) in very high-dimensional spaces, such that the problem of \textbf{local minima} seems to be miraculously avoided.  To accurately explain this phenomenon may involve the mysteries of the P $\stackrel{?}{=}$ NP problem and should not be expected any time soon.
+
+Deep learning also has the characteristic of hierarchically many layers of parameters, but this may not be a necessary requirement, as recent thinking on ``\textbf{shallow learning}'' suggests.  Our algorithm also challenges this view.
+
+Our key contribution is to make the logic rules-base \textbf{differentiable}, so that gradient descent can be applied to find an optimal set of logic rules optimizing some objective function.  This solves the age-old problem of logic-based AI's lack of an efficient learning algorithm, that is responsible for the so-called ``\textbf{AI Winter}'' around the 1970-80s.
+
+The Transformer, based on Self-Attention, is the current state-of-the-art module for building LLMs (Large Language Models).  It is based on a \textbf{differentiable memory-retrieval mechanism} that originated in \textbf{Neural Turing Machines}, and later shown to be equivalent to \textbf{Hopfield Networks}, also a kind of associative memory.  It suffers from the drawback that it is not easy to interpret what the ``tokens'' stand for, that hinders further attempts to improve it.  The logic-based approach offers a much better understanding of the internal workings of AGI.
+
+Moreover, our model, which may be called ``Logic Transformer,'' is significantly more structured than the traditional Transformer.  According to the \textbf{No Free Lunch theorem}, machines with more restrictive structures have more inductive bias and learn faster.
+
+The most important theoretical background that inspired this research is Paul Halmos' \textbf{algebraic logic}.  In retrospect, I just needed to make traditional logic algorithms differentiable.  But with a great mathematician as Halmos standing behind my back and pointing to what needs to be done, I felt much more confident to work through some tedious details.  One cannot exactly pinpoint what is the importance of ``beautiful'' mathematics, but it really made a big difference.
+
+At this point I do not know the experimental outcome yet.  I hope my work can inspire the reader to find better improvements (eg. by rewriting the neural string diagram) or explore entirely different directions.
+
 Good luck.
