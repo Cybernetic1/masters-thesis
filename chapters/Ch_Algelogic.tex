@@ -273,20 +273,28 @@ We suggest the following values (for a general human-level intelligent agent):
 \begin{equation}
 \begin{tabular}{|c|c|c|}
 	\hline
-	\textbf{Variable} & \textbf{Symbol} & \textbf{Suggested values} \\
+	\textbf{Meaning} & \textbf{Symbol} & \textbf{Est. typical values} \\
 	\hline
 	\# of rules & $M$ &  millions up \\
 	\hline
-	\# of literals per rule & $K$ &  2-10, typical 3,4 \\
+	total \# of predicates & $K$ &  10,000's \\
 	\hline
-	\# of arguments per rule & $n$ & 2, 3, 4  \\
+	\# of predicates per rule & $J$ &  2-10, typical 3,4 \\
 	\hline
-	Subject Space dimension & dim $X$ &  100-1000, typical 512, 768 \\
+	\# of arguments per predicate & $I$ & 2, 3, 4  \\
+	\hline
+	Subject Space dimension & $|X|$ &  100-1000, typical 512, 768 \\
+	\hline
+	Predicate Space dimension & $|\Psi|$ &  same as above \\
+	\hline
+	Hidden layer size & $h$ & similar to $|X|$ \\
+	\hline
+	\# of propositions in working memory & $N$ & \sim 100 \\
 	\hline
 \end{tabular}
 \end{equation}
 
-Is everything differentiable?
+Total number of parameters $= 2MK + 2MKI + K(|X|+(L-2)h) + MKI^2 + MI^2 \approx $ 26 billion.
 
 \section{Rules recommender}
 
