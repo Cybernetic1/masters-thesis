@@ -241,6 +241,20 @@ The training of the neural network for predicate $P$ occurs in $X^2$ if the arit
 
 To evaluate a rule:  Each predicate, such as $\mathsf{father(\_,\_)}$, is matched against some points, such as $(a,b)$.  The neural network returns a TV (truth value) independent of the variable space $X^I$.  But we need to put the point $(a,b)$ into $X^I$ via the \textbf{Softmax} selector.  This is repeated for all predicates on the LHS or ``head'' of the rule.  Then the truth values will determine if the rule is satisfied or not.  If yes, we will output a predicate such as $\mathsf{grand\hbox{-}father}(X_1, X_3)$.  Now we go back to $X^I$ to retrieve the point corresponding to the variables $(X_1, X_3)$.
 
+\subsection{String diagram}
+
+\begin{equation}
+\hspace{-1.5cm}\vcenter{\hbox{\includegraphics[scale=0.7]{logic-Transformer-string-diagram-2.png}}}
+\end{equation}
+
+Remarks:
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+	\item We want to compare arguments of predicates in rules against propositions from Working Memory, ie, $\gamma(C) \stackrel{?}{=} c$, where $\gamma$ is a cylindrification factor (turned into a radial basis function), $C$ is a \textbf{constant} in a predicate in a rule, such as $\mathsf{Mary}$ in $\mathsf{loves}(\mathsf{John},\mathsf{Mary})$, to be matched against $c$, another constant argument of a predicate of a proposition from Working Memory.  In the above example, $(\mathsf{John},\mathsf{Mary})$ is a \textbf{point} in the Subject Space $X^2$.  $\mathsf{John}$ and $\mathsf{Mary}$ are also known as ``coordinates'' in $X^2$. \\
+	\item On each step, we're not just comparing two elements, but two multi-dimensional matrices of elements.  On the left side is a matrix of dimensions $[M,K,|X|^I]$, for $M$ rules, each with $K$ predicates, each with $I$ argument slots, each containing an element of the Subject Space $X$.  On the right side (from Working Memory), we have a matrix of dimensions $[N,|X|^I]$, for $N$ propositions, each with $I$ argument slots, each containing an element of the Subject Space $X$. \\
+	For each rule $m \in M$, for each predicate $k \in K$, for each slot $i \in I$, we compare $C_{mki}$ against $c_{ni}$ for each proposition $n \in N$, for each argument slot $i \in I$.  This totals to $MKNI$ comparisons (the index $i$ counts only once).  This means trillions of comparisons, by our naive estimation of sizes.
+	\item Each proposition in Working Memory has a truth value.  This TV has to be multiplied to the result in \circled{2}.
+\end{enumerate}
+
 \section{Computer representation of rules}
 
 Each logic rule may vary in the following ways:
@@ -294,7 +308,7 @@ We suggest the following values (for a general human-level intelligent agent):
 \end{tabular}
 \end{equation}
 
-Total number of parameters $= 2MK + 2MKI + K(|X|+(L-2)h) + MKI^2 + MI^2 \approx $ 26 billion.
+Total number of parameters (in descending order of size) $= MKIX + MK\Psi + MKI^2 + MKI + 2MK + MI^2 + NIX + N\Psi + N + K(|X|+(L-2)h) \approx $ 20 trillion.  Perhaps $M$ and $K$ have to be reduced.
 
 \section{Rules recommender}
 
