@@ -97,6 +97,6 @@ The implementation can be illustrated as follows:
 \draw (pic cs:Slot3) +(20pt,-7pt) -- ($ (pic cs:x23) +(7pt,12pt) $);
 \end{tikzpicture}
 \end{align}
-Every argument in the lower row has the potential to end up in any slot on the upper row.  For each slot, we take a \textbf{Softmax} to ``select'' one argument as the ``winner''.  Such a parallel use of Softmax has essentially the same structure as -- surprise? -- \textbf{Self Attention}.
+Every argument in the lower row has the potential to end up in any slot on the upper row.  For each slot, we take a \textbf{Softmax} to ``select'' one argument as the ``winner''.  Such parallel application of Softmax has essentially the same structure as -- surprise? -- \textbf{Self Attention}.
 
 The rest of my thesis will explain these constructions in more details, but once the reader understands the principles behind them, the tedious details kind of fall into place naturally.
