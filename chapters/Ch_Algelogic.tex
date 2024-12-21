@@ -148,11 +148,11 @@ RHS:  The bound variables (in various dimensions) need to be projected to the ou
 
 Again drawing inspiration from Halmos' algebraic logic.  A monadic logic deals with predicates as $X \rightarrow \Omega$, whereas in polyadic logic one has $X^I \rightarrow \Omega$ where $I$ is an index set.  The elements of $I$ are \textbf{variables} even though they do not really change.  $X^I$ creates $I$ copies of the Subject Space $X$. Note that $(I \rightarrow X) \rightarrow \Omega$ is not isomorphic to $I \rightarrow (X \rightarrow \Omega)$.
 
-% Solution:  Suppose we have a predicate of 2 arguments, eg. $\mathsf{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that... 
+% Solution:  Suppose we have a predicate of 2 arguments, eg. $\logic{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that... 
 
 For example $I = \{ 1,2,3,4 \}$ would provide 4 variables or ``slots'' for a rule to use.  A rule such as:
 \begin{equation}
-	\mathsf{father}(X_1,X_2) \wedge \mathsf{father}(X_2,X_3) \rightarrow \mathsf{grand\hbox{-}father}(X_1,X_3)
+	\logic{father}(X_1,X_2) \wedge \logic{father}(X_2,X_3) \rightarrow \logic{grand\hbox{-}father}(X_1,X_3)
 \end{equation}
 uses 3 variables: $X_1, X_2, X_3$.  I have used the symbol $X$ with subscripts to denote variables, as a reminder that each variable is really a \textbf{copy} of our Subject Space $X$.
 
@@ -160,17 +160,17 @@ uses 3 variables: $X_1, X_2, X_3$.  I have used the symbol $X$ with subscripts t
 
 It is perhaps illuminating to rewrite the logic rule this way:
 \begin{equation}
-	\mathsf{father}(X^I) \wedge \mathsf{father}(X^I) \rightarrow \mathsf{grand\hbox{-}father}(X^I)
+	\logic{father}(X^I) \wedge \logic{father}(X^I) \rightarrow \logic{grand\hbox{-}father}(X^I)
 \end{equation}
 where $I$ is at least $\{ 1,2,3 \}$.
 
 In my mind, I had this mental picture:
 \begin{equation}
-	\mathsf{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables1.png}}}) 
+	\logic{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables1.png}}}) 
 	\wedge 
-	\mathsf{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables2.png}}})
+	\logic{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables2.png}}})
 	\rightarrow
-	\mathsf{grand\hbox{-}father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables3.png}}})
+	\logic{grand\hbox{-}father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables3.png}}})
 \end{equation}
 where the blue bars represent some kind of relative ``proportion'' of variables, such that the overall construction could be \textbf{differentiable}.
 
@@ -192,8 +192,8 @@ The eventual implementation is quite natural:
 \tikzmark{Y3} \fcolorbox{cyan!70}{white}{$\hat{x}^3$} \\
 & \qquad w_{ij}^k \\
 & \nonumber \\
-& \mathsf{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \bullet_{13}) \wedge
-\mathsf{father}(\tikzmark{X21} \bullet_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \mathsf{grand\hbox{-}father}(x_1,\bullet_2,x_3)
+& \logic{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \bullet_{13}) \wedge
+\logic{father}(\tikzmark{X21} \bullet_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \logic{grand\hbox{-}father}(x_1,\bullet_2,x_3)
 \nonumber
 \begin{tikzpicture}[remember picture,overlay]
 \draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
@@ -239,7 +239,7 @@ For comparison, this is the \textbf{neural string diagram} for the traditional S
 
 The training of the neural network for predicate $P$ occurs in $X^2$ if the arity of the predicate is 2.  This has nothing to do with $X^I$ as the set $I$ of variables are only involved in logic rules.
 
-To evaluate a rule:  Each predicate, such as $\mathsf{father(\_,\_)}$, is matched against some points, such as $(a,b)$.  The neural network returns a TV (truth value) independent of the variable space $X^I$.  But we need to put the point $(a,b)$ into $X^I$ via the \textbf{Softmax} selector.  This is repeated for all predicates on the LHS or ``head'' of the rule.  Then the truth values will determine if the rule is satisfied or not.  If yes, we will output a predicate such as $\mathsf{grand\hbox{-}father}(X_1, X_3)$.  Now we go back to $X^I$ to retrieve the point corresponding to the variables $(X_1, X_3)$.
+To evaluate a rule:  Each predicate, such as $\logic{father(\_,\_)}$, is matched against some points, such as $(a,b)$.  The neural network returns a TV (truth value) independent of the variable space $X^I$.  But we need to put the point $(a,b)$ into $X^I$ via the \textbf{Softmax} selector.  This is repeated for all predicates on the LHS or ``head'' of the rule.  Then the truth values will determine if the rule is satisfied or not.  If yes, we will output a predicate such as $\logic{grand\hbox{-}father}(X_1, X_3)$.  Now we go back to $X^I$ to retrieve the point corresponding to the variables $(X_1, X_3)$.
 
 \subsection{String diagram}
 
@@ -249,9 +249,9 @@ To evaluate a rule:  Each predicate, such as $\mathsf{father(\_,\_)}$, is matche
 
 Remarks:
 \begin{enumerate}  % [label=\protect\circled{\arabic*}]
-	\item[\textbullet] The \textbf{grayed-out} parts of the circuit tries to match the \textbf{predicates} of Working-Memory propositions to those in the rules.  For example, the predicate $\mathsf{loves}$ where $\mathsf{loves(John,Mary)}$ matches $\mathsf{loves}(X_1,X_2)$.  But I take the more liberal approach where matching succeeds whenever a point in Working Memory falls within the target predicate's region of definition, regardless of whether the source and target predicates match or not.  For example, assume $\mathsf{human(Socrates)}$ is in Working Memory, and we want to match against $\mathsf{mortal(X_1)}$.  This will succeed if the $\mathsf{human}$ region lies strictly within the $\mathsf{mortal}$ region in Subject Space.  If the predicate regions are learned properly, this would be the case.  Using this approach, rules are more easily satisfied, and the code seems to be simpler.
+	\item[\textbullet] The \textbf{grayed-out} parts of the circuit tries to match the \textbf{predicates} of Working-Memory propositions to those in the rules.  For example, the predicate $\logic{loves}$ where $\logic{loves(John,Mary)}$ matches $\logic{loves}(X_1,X_2)$.  But I take the more liberal approach where matching succeeds whenever a point in Working Memory falls within the target predicate's region of definition, regardless of whether the source and target predicates match or not.  For example, assume $\logic{human(Socrates)}$ is in Working Memory, and we want to match against $\logic{mortal(X_1)}$.  This will succeed if the $\logic{human}$ region lies strictly within the $\logic{mortal}$ region in Subject Space.  If the predicate regions are learned properly, this would be the case.  Using this approach, rules are more easily satisfied, and the code seems to be simpler.
 
-	\item[\circled{1}] We want to compare arguments of predicates in rules against propositions from Working Memory, ie, $\gamma(C) \stackrel{?}{=} c$, where $\gamma$ is a cylindrification factor (turned into a radial basis function), $C$ is a \textbf{constant} in a predicate in a rule, such as $\mathsf{Mary}$ in $\mathsf{loves}(\mathsf{John},\mathsf{Mary})$, to be matched against $c$, another constant argument of a predicate of a proposition from Working Memory.  In the above example, $(\mathsf{John},\mathsf{Mary})$ is a \textbf{point} in the Subject Space $X^2$.  $\mathsf{John}$ and $\mathsf{Mary}$ are also known as ``coordinates'' in $X^2$.
+	\item[\circled{1}] We want to compare arguments of predicates in rules against propositions from Working Memory, ie, $\gamma(C) \stackrel{?}{=} c$, where $\gamma$ is a cylindrification factor (turned into a radial basis function), $C$ is a \textbf{constant} in a predicate in a rule, such as $\logic{Mary}$ in $\logic{loves}(\logic{John},\logic{Mary})$, to be matched against $c$, another constant argument of a predicate of a proposition from Working Memory.  In the above example, $(\logic{John},\logic{Mary})$ is a \textbf{point} in the Subject Space $X^2$.  $\logic{John}$ and $\logic{Mary}$ are also known as ``coordinates'' in $X^2$.
 	
 	\item[\circled{2}] On each step, we're not just comparing two elements, but two multi-dimensional matrices of elements.  On the left side is a matrix of dimensions $[M,K,|X|^I]$, for $M$ rules, each with $K$ predicates, each with $I$ argument slots, each containing an element of the Subject Space $X$.  On the right side (from Working Memory), we have a matrix of dimensions $[N,|X|^I]$, for $N$ propositions, each with $I$ argument slots, each containing an element of the Subject Space $X$. \\
 
@@ -319,7 +319,7 @@ Total number of parameters (in descending order of size) $= MKIX + MK\Psi + MKI^
 
 The rules recommender would be a set function:
 \begin{equation}
-\mathsf{Ru}: \{ \mbox{current state} \} \rightarrow \{ \mbox{set of rules} \}
+\logic{Ru}: \{ \mbox{current state} \} \rightarrow \{ \mbox{set of rules} \}
 \end{equation}
 which has equivariant structure on both its input and output.  This suggests the \textbf{Transformer} architecture is suitable for learning this function.
 
