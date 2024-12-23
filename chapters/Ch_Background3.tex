@@ -25,13 +25,15 @@ More technically, we have the following duality.  Every Boolean algebra $\mathbb
 
 Please refer to the next 4 pages excerpted from the book \textit{Geometry I: Basic Ideas and Concepts of Differential Geometry}, by some Russian authors from 1991 \cite{Alekseevskij1991}.  They attributed the idea to Yuri Manin.
 
-Halmos' algebraization is quite straightforward:  predicates are simply functions from Subject Space to truth values.  Yuri Manin's approach brings algebraic logic into the picture:  the structure sheaf (a commutative ring) sits above a site which is an algebraic variety endowed with a topology.  
+Halmos' algebraization is quite straightforward:  predicates are simply functions from Subject Space to truth values.  Yuri Manin's approach brings \textbf{algebraic geometry} into the picture:  Suppose $\mathbb{A}$ is a Boolean algebra.  An element $P \in \mathbb{A}$ can be understood as an $\mathbb{F}_2$-valued function (ie, taking truth values 0 or 1) on the set $\Spec \mathbb{A}$.  The subset $M_P \subset \Spec \mathbb{A}$ consists of those objects for which the statement $P$ is true.  In our terminology, $P$ is a predicate, $M_P$ is the subset for which $P$ is true, $\Spec \mathbb{A} = X =$ Subject Space, and ``points'' in Subject Space are maximal (or prime) ideals of the algebra $\mathbb{A}$.
 
 Any ring can be considered a ring of functions over a space $X$.  The ``points'' of $X$ correspond to homomorphisms from the ring into certain fields.  We can view them as maximal (or prime) ideals of the ring.
 
-My understanding is that \textbf{Boolean algebra} and \textbf{Boolean rings} are essentially synonymous.  Both can be regarded as a form of propositional logic.
+% The structure sheaf (a commutative ring) sits above a site which is an algebraic variety endowed with a topology.  
 
-\textbf{Stone duality} provides the link between Boolean algebra and the algebra of sets (in a topological space).  But whether this link can be extended to predicate logic is unclear.
+% My understanding is that \textbf{Boolean algebra} and \textbf{Boolean rings} are essentially synonymous.  Both can be regarded as a form of propositional logic.
+
+\textbf{Stone duality} provides the link between Boolean algebra and the algebra of sets (of a topological space).  Halmos' algebraization provides a simple way to extend this to predicate logic.  Manin's idea coincides with Halmos', but it offers a deeper, algebraic-geometric perspective.
 
 \begin{figure}
 \tcbincludegraphics[hbox,colframe=blue,boxrule=1pt,arc=0pt,outer arc=0pt,graphics options={scale=0.5}]{Geometry-I-a.png}
