@@ -83,7 +83,101 @@ An interesting question is whether this correspondence fits into our framework o
 
 \section{How to study symmetries in deep learning?}
 
-Self-Attention:
+In the following, we will use this sentence as example:
 \begin{equation}
-y_i = \mathrm{softmax} \langle W^Q x_i , (W^K x_j)^\top \rangle W^V x_i
+	\mbox{\textit{The quick brown fox jumps over the lazy dog}}
+\end{equation}
+which is a sequence of length $n = 9$.
+
+Matrix formula for Self-Attention:
+\begin{align}
+	Q &= W^Q X \nonumber \\
+	K &= W^K X \nonumber \\
+	V &= W^V X \nonumber \\
+	\boxed{\mbox{output}} \quad  Z &= \mathrm{softmax} \left( \frac{ Q K^\top }{\sqrt{d_k}} \right) V
+	\label{eqn:self-attention}
+\end{align}
+Take the convention that $X$ consists of ``word vectors'' as \textbf{row} vectors, stacked up to form a matrix of height $n$ which is the sequence length.  The equivariant symmetry says that if we swap any two row vectors in $X$, then the output $Z$ would also have the same rows swapped.  Is this symmetry easy to spot from equation \ref{eqn:self-attention}?  (Note: softmax does not change the structure of its matrix argument, so structurally the output matrix is just $QK^\top V$.)  Perhaps if the reader is very good at linear algebra, but I could not see it.
+
+Figure (\ref{fig:self-attention}) makes it easier to see the matrices' dimensions, but the symmetry is still not apparent.
+\begin{figure}
+\begin{equation}
+\vcenter{\hbox{\includegraphics[scale=0.5]{self-Attention.png}}}
+\label{fig:self-attention}
+\end{equation}
+\end{figure}
+
+The way I ``see'' the symmetry can be described verbally as follows:  Imagine \textit{Fox} and \textit{Dog} swapped positions at the input.  The table-lookup operations $W^Q, W^K$ and $W^V$ do not change the rows structure.  When \textit{Fox} is the \textbf{pivot} of its rule, it is matched against Key Key ... Key (which are the same keys as would be matched against \textit{Dog}).  The result for \textit{Fox}'s matching would be a row vector of length $n$, same as for \textit{Dog}.  Since there are $n$ words in the sequence, and each matching involves $n$ keys, the results make up a $n \times n$ matrix, which we call the \textbf{Attention matrix} (after applying softmax, but softmax does not change the structure of the matrix).  In the final matrix multiplication, $[d_V \times n] \times [n \times n] = [d_V \times n]$, where one common dimension $n$ on each side has been ``destroyed'' by \textbf{contraction} (dot product).  Another way to say this, not using dot product, is that we have $n$ Value vectors, each Value vector is weighted by one row of the Attention matrix and then added together, resulting in a new Value vector.  This is repeated $n$ times to give $[d_V, n]$.
+
+\begin{figure}
+	\begin{equation}
+	\hspace{-1.5cm}\vcenter{\hbox{\includegraphics[scale=0.6]{self-attention-string-diagram-2.png}}}
+	\qquad
+	\vcenter{\hbox{\includegraphics[scale=0.6]{self-attention-string-diagram-3.png}}}
+	\label{fig:self-attention-2-and-3}
+	\end{equation}
+\end{figure}
+
+The simplest example of an equivariance:
+\begin{equation}
+% method to draw a sigmoid-shape curve:
+% \draw (0,0) .. controls (0,4) and (4,0) .. (4,4);
+% the controls acts like "magnets"
+\begin{tikzpicture}[every path/.style={thick}]
+\node[] (x0) at (-3, 0) {};
+\node[] (x1) at (-3, 0.5) {};
+\node[] (1i) at (-2.7, 0.5) {};
+\node[] (1j) at (-1.7, 0.5) {};
+\node[] (x2) at (-3, 1) {};
+\node[] (x3) at (-3, 1.5) {};
+\node[] (3i) at (-2.7, 1.5) {};
+\node[] (3j) at (-1.7, 1.5) {};
+\node[] (x4) at (-3, 2) {};
+\node[] (x5) at (-3, 2.5) {};
+\node[] (y0) at (3, 0) {};
+\node[] (y1) at (3, 0.5) {};
+\node[] (y2) at (3, 1) {};
+\node[] (y3) at (3, 1.5) {};
+\node[] (y4) at (3, 2) {};
+\node[] (y5) at (3, 2.5) {};
+\draw (x0) to (y0);
+\draw[red] (x1) to (1i.center);
+    \draw[red] (1i.center) to[out=0,in=-180] (3j.center);
+    \draw[red] (3j.center) to (y3);
+\draw (x2) to (y2);
+\draw[blue] (x3) to (3i.center);
+    \draw[blue] (3i.center) to[out=0,in=-180] (1j.center);
+    \draw[blue] (1j.center) to (y1);
+\draw (x4) to (y4);
+\draw (x5) to (y5);
+\end{tikzpicture}
+\qquad \raisebox{3em}{=} \qquad
+\begin{tikzpicture}[every path/.style={thick}]
+\node[] (x0) at (-3, 0) {};
+\node[] (x1) at (-3, 0.5) {};
+\node[] (1i) at (1.7, 0.5) {};
+\node[] (1j) at (2.7, 0.5) {};
+\node[] (x2) at (-3, 1) {};
+\node[] (x3) at (-3, 1.5) {};
+\node[] (3i) at (1.7, 1.5) {};
+\node[] (3j) at (2.7, 1.5) {};
+\node[] (x4) at (-3, 2) {};
+\node[] (x5) at (-3, 2.5) {};
+\node[] (y0) at (3, 0) {};
+\node[] (y1) at (3, 0.5) {};
+\node[] (y2) at (3, 1) {};
+\node[] (y3) at (3, 1.5) {};
+\node[] (y4) at (3, 2) {};
+\node[] (y5) at (3, 2.5) {};
+\draw (x0) to (y0);
+\draw[red] (x1) to (1i.center);
+	\draw[red] (1i.center) to[out=0,in=-180] (3j.center);
+	\draw[red] (3j.center) to (y3);
+\draw (x2) to (y2);
+\draw[blue] (x3) to (3i.center);
+	\draw[blue] (3i.center) to[out=0,in=-180] (1j.center);
+	\draw[blue] (1j.center) to (y1);
+\draw (x4) to (y4);
+\draw (x5) to (y5);
+\end{tikzpicture}
 \end{equation}
