@@ -107,7 +107,7 @@ Figure (\ref{fig:self-attention}) makes it easier to see the matrices' dimension
 \end{equation}
 \end{figure}
 
-The way I ``see'' the symmetry can be described verbally as follows:  Imagine \textit{Fox} and \textit{Dog} swapped positions at the input.  The table-lookup operations $W^Q, W^K$ and $W^V$ do not change the rows structure.  When \textit{Fox} is the \textbf{pivot} of its rule, it is matched against Key Key ... Key (which are the same keys as would be matched against \textit{Dog}).  The result for \textit{Fox}'s matching would be a row vector of length $n$, same as for \textit{Dog}.  Since there are $n$ words in the sequence, and each matching involves $n$ keys, the results make up a $n \times n$ matrix, which we call the \textbf{Attention matrix} (after applying softmax, but softmax does not change the structure of the matrix).  In the final matrix multiplication, $[d_V \times n] \times [n \times n] = [d_V \times n]$, where one common dimension $n$ on each side has been ``destroyed'' by \textbf{contraction} (dot product).  Another way to say this, not using dot product, is that we have $n$ Value vectors, each Value vector is weighted by one row of the Attention matrix and then added together, resulting in a new Value vector.  This is repeated $n$ times to give $[d_V, n]$.
+The way I ``see'' the symmetry can be described verbally as follows:  Imagine \textit{Fox} and \textit{Dog} swapped positions at the input.  The table-lookup operations $W^Q, W^K$ and $W^V$ do not change the rows structure.  When \textit{Fox} is the \textbf{pivot} of its rule, it is matched against Key Key ... Key (which are the same keys as would be matched against \textit{Dog}).  The result for \textit{Fox}'s matching would be a row vector of length $n$, same as for \textit{Dog}.  Since there are $n$ words in the sequence, and each matching involves $n$ keys, the results make up a $n \times n$ matrix, which we call the \textbf{Attention matrix} (after applying softmax, but softmax does not change the structure of the matrix).  In the final matrix multiplication, $[d_V \times n] \times [n \times n] \rightarrow [d_V \times n]$, where one common dimension $n$ on each side has been ``destroyed'' by \textbf{contraction} (dot product).  Another way to say this, not using dot product, is that we have $n$ Value vectors, each Value vector is weighted by one row of the Attention matrix and then added together, resulting in a new Value vector.  This is repeated $n$ times to give $[d_V, n]$.
 
 \begin{figure}
 	\begin{equation}
@@ -189,10 +189,20 @@ Practical TO-DO:
 	\item clarify the role of predicates in HOL, esp its geometric interpretation
 \end{itemize}
 
-Abstract TO-DO:
-\begin{itemize}
-	\item compare 2 neural architectures, how?
-	\item compare symmetries or size of parameter space
-	\item rewrite neural string diagrams, how?
-	\item 
-\end{itemize}
+% 其实想问问就是： 现时理论还能为我们做什么？
+% 逻辑 含有「更强」的对称性，但这确切地是什么意思？
+% 问题是，暂时我们不太懂得如何量度任意的对称性
+% 对称性即「约束」，但此又引申到 参数空间大小的问题
+% 如果 参数空间的大小不变，对称性仍可以有强弱之分
+% 而以上的观测是严格成立的
+% 所以可以说，对称性就是： 在参数空间一样大的情况下，
+% 为什么我们说 Attention 比 fully connected 有更强对称性？
+% 对称性似乎是相对于 input-output 而言的
+
+The question now is:  what can abstract theory do for us?  We wish to be able to ``compare'' the symmetries possessed by systems.  When doing so, it is important to \textbf{restrict} the number of parameters for all systems in consideration.  This restriction comes from limited computing resource, without which it is meaningless to compare architectures.  After we fixed the number of parameters, two systems, such as fully-connected vs Transformer, could still be different as one possesses equivariant symmetry while the other does not.  This difference in symmetry is what I argue to be crucial to acceleration.
+
+In its most general form an AGI system is defined by the transition function $X_{t+1} = \squareF(X_t)$.  A symmetry can be defined as any group $G$ such that $\squareF$ is invariant or equivariant under its action on the input $X$.  For example, $\squareF(\sigma X) = \sigma \squareF(X), \forall \sigma \in G$.  More generally, any constraint on $\squareF$ could result in acceleration, such as an equation satisfied by $\squareF$.
+
+What is the relation between equivariance of Attention and symmetric NNs of Kolmogorov-Arnold type?
+
+Rewrite neural string diagrams, how?
