@@ -438,6 +438,6 @@ where TD = \textbf{temporal difference} is defined as:
 \begin{equation}
 	\mbox{TD-error} = \overbrace{R + \gamma \max_{a'} Q(s_{t+1},a')}^{\mbox{ideal value}} \overbrace{ - \; Q(s,a)}^{\mbox{current value}} .
 \end{equation}
-So obviously the Bellman update causes the current value of $Q$ to \textbf{converge} to that of the ideal value $Q^*$.
+So obviously the Bellman update causes the current value of $Q$ to \textbf{converge} to that of the optimal value $Q^*$.
 
 Remember that, in the simplest \textbf{Q-table} method, we apply the Bellman update over Q-table entries.  The \textbf{DQN} approach differs in that, instead of a Q-table, we use a deep neural network in its place.  So the updating of the Q-table now becomes updating the DQN via \textbf{gradient descent}.
