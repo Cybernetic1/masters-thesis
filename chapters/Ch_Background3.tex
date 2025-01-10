@@ -186,7 +186,7 @@ The simplest example of an equivariance:
 \end{tikzpicture}
 \end{equation}
 
-Illustration of a function $\vec{f}$ with equivariance property:
+Illustration of a function $\vec{f}$ with \textbf{equivariance} property:
 \begin{equation}
 % method to draw a sigmoid-shape curve:
 % \draw (0,0) .. controls (0,4) and (4,0) .. (4,4);
@@ -246,6 +246,47 @@ Illustration of a function $\vec{f}$ with equivariance property:
 \draw[blue] (z1.center) to (v1);
 \draw (z2.center) to (v2);
 \node[inner xsep=40pt,draw,in front of path,fill=white] (f) at (1,1) {$\vec{f}$};
+\end{tikzpicture}
+\end{equation}
+
+If $\vec{f}$ is \textbf{invariant}, the diagram would be:
+\begin{equation}
+\begin{tikzpicture}[every path/.style={thick}]
+\node[above] (x0) at (0, 3) {${\scriptstyle f_1(\vec{v})}$};
+\node[above] (x1) at (1, 3) {${\scriptstyle f_2(\vec{v})}$};
+\node[above] (x2) at (2, 3) {${\scriptstyle f_3(\vec{v})}$};
+\node[] (z0) at (0, 1.5) {};
+\node[] (z1) at (1, 1.5) {};
+\node[] (z2) at (2, 1.5) {};
+\node[red,below] (v0) at (0, 0) {$v_1$};
+\node[blue,below] (v1) at (1, 0) {$v_2$};
+\node[below] (v2) at (2, 0) {$v_3$};
+\draw[red] (x0) to (z0.center);
+\draw[blue] (x1) to (z1.center);
+\draw (x2) to (z2.center);
+\draw[blue] (z0.center) .. controls (0,0.3) and (1,1.2) .. (v1);
+\draw[red] (z1.center) .. controls (1,0.3) and (0,1.2) .. (v0);
+\draw (z2.center) to (v2);
+\node[inner xsep=40pt,draw,in front of path,fill=white] (f) at (1,1.8) {$\vec{f}$};
+\end{tikzpicture}
+\qquad \raisebox{5em}{=} \qquad
+\begin{tikzpicture}[every path/.style={thick}]
+\node[above] (x0) at (0, 3) {${\scriptstyle f_1(\vec{v})}$};
+\node[above] (x1) at (1, 3) {${\scriptstyle f_2(\vec{v})}$};
+\node[above] (x2) at (2, 3) {${\scriptstyle f_3(\vec{v})}$};
+\node[] (z0) at (0, 1.5) {};
+\node[] (z1) at (1, 1.5) {};
+\node[] (z2) at (2, 1.5) {};
+\node[red,below] (v0) at (0, 0) {$v_1$};
+\node[blue,below] (v1) at (1, 0) {$v_2$};
+\node[below] (v2) at (2, 0) {$v_3$};
+\draw[red] (x0) to (z0.center);
+\draw[blue] (x1) to (z1.center);
+\draw (x2) to (z2.center);
+\draw[red] (z0.center) to (v0);
+\draw[blue] (z1.center) to (v1);
+\draw (z2.center) to (v2);
+\node[inner xsep=40pt,draw,in front of path,fill=white] (f) at (1,1.8) {$\vec{f}$};
 \end{tikzpicture}
 \end{equation}
 
