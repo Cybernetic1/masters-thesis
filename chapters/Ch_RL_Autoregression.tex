@@ -34,7 +34,6 @@ The goal of RL is to maximize the reward:
 
 If we use RL to model internal mental states, then each action is an internal next-thought.  In this setting, what does auto-regression, or ``prediction of the next state,'' mean?
 
-\begin{comment}
 The following approach may be wrong:
 \begin{equation}
 % from /2023/RL-with-world-model.svg and generative-models-and-AGI.svg
@@ -48,8 +47,6 @@ The following approach to Tic-Tac-Toe may be wrong:
 \vcenter{\hbox{\includegraphics[scale=0.7]{RL-with-autoencoder-TTT.png}}}
 \end{equation}
 What we call ``prediction'' should be about external world-states.  
-
-\end{comment}
 
 Think about it:  it does not make too much sense for auto-regression to predict the next \textit{internal} thought;  that would be highly redundant.
 
