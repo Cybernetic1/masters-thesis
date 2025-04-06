@@ -134,7 +134,7 @@ How does the rule's RHS generate a new fact?  It should also be a (point, predic
 
 Secondly, the output predicate may not cover the point.
 
-The matching process:  Syntactically, we look at each literal in the rule and see if any fact unifies with the literal.  Geometrically, it means taking a point and checking if it lies inside a predicate.  If the fact is a (point, predicate) pair then it is given that the point belongs to the predicate, so it is not necessary to check for membership.  The result is simply taking the point when the predicates match.  But we still need to keep track of which variables the point coordinates are binding to.
+The matching process:  Syntactically, we look at each literal in the rule and see if any fact unifies with the literal.  Geometrically, it means taking a point and checking if it lies inside a predicate.  If the fact is a (point, predicate) pair then it is certain that the point belongs to the predicate, so it is not necessary to check for membership.  The result is simply taking the point when the predicates match.  But we still need to keep track of which variables the point coordinates are binding to.
 
 The matching of the second literal will also return a point, but its coordinates would be bound to different dimensions.
 
