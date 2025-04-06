@@ -109,7 +109,7 @@ The \textbf{interestingness function} gives a probability distribution over conc
 
 One more efficiency problem:  iterating through all equations is inefficient, which brings back the necessity of the classical \textbf{rete algorithm}:  instead of matching rules against the state, we should match the current state against rules.  In other words, instead of $\delta x := \bigcup_i \mathrm{rule}_i (x)$, perform $\delta x := \text{compiled-rules}(\Delta x) $, where $\Delta x$ is the change of the current state from the previous state, and $\delta x$ is the change from the current state to the next state.
 
-But we may also avoid the rete algorithm by stacking logical equations into \textbf{layers}, thus getting an efficiency advantage similar to deep learning.  A ``single'' step of logic inference would mean going through multiple layers of logic rules (equations).  
+But we may also avoid the rete algorithm by stacking logical equations into \textbf{layers}, thus getting an efficiency advantage similar to deep learning.  A ``single'' step of logic inference would mean going through multiple layers of logic rules (equations).
 
 \section{``Geometric'' logic inference algorithm}
 
@@ -122,7 +122,7 @@ But we may also avoid the rete algorithm by stacking logical equations into \tex
 	\item How does a rule generate a single new fact?
 \end{itemize}
 
-A fact consists of a point (in subject space) and a predicate that contains it.  The point itself does not suffice because it can belong to various predicates.  
+A fact consists of a point (in subject space) and a predicate that contains it.  The point itself does not suffice because it can belong to various predicates.
 
 \subsection{How to determine if a rule is satisfied}
 
@@ -136,7 +136,7 @@ Secondly, the output predicate may not cover the point.
 
 The matching process:  Syntactically, we look at each literal in the rule and see if any fact unifies with the literal.  Geometrically, it means taking a point and checking if it lies inside a predicate.  If the fact is a (point, predicate) pair then it is given that the point belongs to the predicate, so it is not necessary to check for membership.  The result is simply taking the point when the predicates match.  But we still need to keep track of which variables the point coordinates are binding to.
 
-The matching of the second literal will also return a point, but its coordinates would be bound to different dimensions.  
+The matching of the second literal will also return a point, but its coordinates would be bound to different dimensions.
 
 The binding of coordinates would be the basis of verifying the rule LHS.
 
@@ -148,7 +148,7 @@ RHS:  The bound variables (in various dimensions) need to be projected to the ou
 
 Again drawing inspiration from Halmos' algebraic logic.  A monadic logic deals with predicates as $X \rightarrow \Omega$, whereas in polyadic logic one has $X^I \rightarrow \Omega$ where $I$ is an index set.  The elements of $I$ are \textbf{variables} even though they do not really change.  $X^I$ creates $I$ copies of the Subject Space $X$. Note that $(I \rightarrow X) \rightarrow \Omega$ is not isomorphic to $I \rightarrow (X \rightarrow \Omega)$.
 
-% Solution:  Suppose we have a predicate of 2 arguments, eg. $\logic{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that... 
+% Solution:  Suppose we have a predicate of 2 arguments, eg. $\logic{loves}(\_, \_)$.  Train a neural network $P: X^I \rightarrow X^I$.  Train a ``selector'' function which chooses 2 out of $I$, in other words, a soft top-2 function $s: I \rightarrow \mathbb{R}$.  This gives a probability distribution over $I$, or more accurately speaking, a fuzzy-value distribution over $I$.  To evaluate a predicate $P$ at a point $(x,y)$, in other words to obtain the truth value of $P(x,y)$, we send $(x,y)$ to $P(x,y) \in X^I$.  Then the fuzzy values are applied to each copy of $X$ in $X^I$ such that...
 
 For example $I = \{ 1,2,3,4 \}$ would provide 4 variables or ``slots'' for a rule to use.  A rule such as:
 \begin{equation}
@@ -166,8 +166,8 @@ where $I$ is at least $\{ 1,2,3 \}$.
 
 In my mind, I had this mental picture:
 \begin{equation}
-	\logic{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables1.png}}}) 
-	\wedge 
+	\logic{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables1.png}}})
+	\wedge
 	\logic{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables2.png}}})
 	\rightarrow
 	\logic{grand\hbox{-}father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables3.png}}})
@@ -247,14 +247,19 @@ To evaluate a rule:  Each predicate, such as $\logic{father(\_,\_)}$, is matched
 \hspace{-1.5cm}\vcenter{\hbox{\includegraphics[scale=0.7]{logic-Transformer-string-diagram-2.png}}}
 \end{equation}
 
-\textbf{Legend:}  The purple {\LARGE\color{purple!60}\RIGHTarrow} indicates \textbf{internal data} supplied by the Transformer, similar to the Q,K,V matrices in traditional Transformers.  They are modified through ``learning'' or training.  The 3 black \RIGHTarrow \ are the \textbf{inputs} to the Transformer, this is matched with the 3 \textbf{outputs} on the right of the diagram.
+\textbf{Legend:}
+\begin{enumerate}
+	\item The magenta {\LARGE\color{magenta}\RIGHTarrow} indicates \textbf{internal data} supplied by the Transformer, similar to the Q,K,V matrices in traditional Transformers.  These are modified through ``learning'' or training.
+	\item The 3 black \RIGHTarrow \ are the \textbf{inputs} to the Transformer, this is matched with the 3 \textbf{outputs} on the right of the diagram.
+	\item Orange tags {\color{orange}$[M,N,...]$} indicate the \textbf{dimensions} of data streams.
+\end{enumerate}
 
-Remarks:
+\textbf{Remarks:}
 \begin{enumerate}  % [label=\protect\circled{\arabic*}]
 	\item[\textbullet] The \textbf{grayed-out} parts of the circuit tries to match the \textbf{predicates} of Working-Memory propositions to those in the rules.  For example, the predicate $\logic{loves}$ where $\logic{loves(John,Mary)}$ matches $\logic{loves}(X_1,X_2)$.  But I take the more liberal approach where matching succeeds whenever a point in Working Memory falls within the target predicate's region of definition, regardless of whether the source and target predicates match or not.  For example, assume $\logic{human(Socrates)}$ is in Working Memory, and we want to match against $\logic{mortal(X_1)}$.  This will succeed if the $\logic{human}$ region lies strictly within the $\logic{mortal}$ region in Subject Space.  If the predicate regions are learned properly, this would be the case.  Using this approach, rules are more easily satisfied, and the code seems to be simpler.
 
 	\item[\circled{1}] We want to compare arguments of predicates in rules against propositions from Working Memory, ie, $\gamma(C) \stackrel{?}{=} c$, where $\gamma$ is a cylindrification factor (turned into a radial basis function), $C$ is a \textbf{constant} in a predicate in a rule, such as $\logic{Mary}$ in $\logic{loves}(\logic{John},\logic{Mary})$, to be matched against $c$, another constant argument of a predicate of a proposition from Working Memory.  In the above example, $(\logic{John},\logic{Mary})$ is a \textbf{point} in the Subject Space $X^2$.  $\logic{John}$ and $\logic{Mary}$ are also known as ``coordinates'' in $X^2$.
-	
+
 	\item[\circled{2}] On each step, we're not just comparing two elements, but two multi-dimensional matrices of elements.  On the left side is a matrix of dimensions $[M,K,|X|^I]$, for $M$ rules, each with $K$ predicates, each with $I$ argument slots, each containing an element of the Subject Space $X$.  On the right side (from Working Memory), we have a matrix of dimensions $[N,|X|^I]$, for $N$ propositions, each with $I$ argument slots, each containing an element of the Subject Space $X$. \\
 
 	The operation $\stackrel{?}{=}$ is performed on the axis $I$, common to both sides.  For each rule $m \in M$, for each predicate $k \in K$, for each slot $i \in I$, we compare $C_{mki}$ against $c_{ni}$ for each proposition $n \in N$, for each argument slot $i \in I$.  This totals to $MKNI$ comparisons (the index $i$ counts only once).  This means trillions of comparisons, by our naive estimation of sizes.
@@ -333,7 +338,7 @@ The rules recommender would be a set function:
 \end{equation}
 which has equivariant structure on both its input and output.  This suggests the \textbf{Transformer} architecture is suitable for learning this function.
 
-But this is clearly \textbf{non-differentiable}!  
+But this is clearly \textbf{non-differentiable}!
 
 \subsection{Differentiability}
 
@@ -353,16 +358,16 @@ It seems that doing so would not affect the convergence (of the learning algorit
 % but if the leafs of the decision tree are SHARED, differentiability may be a problem?
 % the sorting tree can be deterministic... how does that affect differentiability?
 % perhaps the rules at a whole can be regarded as a single function transforming the current state to the next state.  Differentiability would be discussed with respect to this function.
-% What does it mean for differentiability to be broken...?  The total rule function must change infinitesimally per each update... 
+% What does it mean for differentiability to be broken...?  The total rule function must change infinitesimally per each update...
 % differentiation is like dy/dx.... when x = the total function...  the question is whether we can always perform x+dx... where dx will not be of finite length
-% the state x will change from step to step....  but that's not a problem...  we care about the 
+% the state x will change from step to step....  but that's not a problem...  we care about the
 
 \begin{equation}
 x_{t+1} = \squareF(x_t; \Theta)
 \end{equation}
 where $\Theta$ are all the parameters that determine the rules, $\squareF$ is the total function aggregating all the rules.  If we vary any one rule parameter, does it change abruptly?  The parameters $\Theta$ include the rules-sorting function $\rho$.
 
-For gradient descent we need to calculate $\nabla_\Theta \mathcal{L}$ where $\Theta$ are all the parameters of rules, and the loss function is defined as the sum of errors over all rules, $\displaystyle \mathcal{L} = \sum_{\text{all rules}} \epsilon^2 $.  Each error usually is given by the difference as compared against a reference value (supervised learning), but in our case such a value is unavailable, instead the objective comes from reinforcement learning, ie, the Hamilton-Jacobi-Bellman equation:  $\displaystyle J(x_{t+1}) = \max_a [ \gamma J(x_t) + R(x_t,a) ] $, where $a$ means \textbf{action}.  In the logic-based setting, an action means applying a logic rule to change the state.  
+For gradient descent we need to calculate $\nabla_\Theta \mathcal{L}$ where $\Theta$ are all the parameters of rules, and the loss function is defined as the sum of errors over all rules, $\displaystyle \mathcal{L} = \sum_{\text{all rules}} \epsilon^2 $.  Each error usually is given by the difference as compared against a reference value (supervised learning), but in our case such a value is unavailable, instead the objective comes from reinforcement learning, ie, the Hamilton-Jacobi-Bellman equation:  $\displaystyle J(x_{t+1}) = \max_a [ \gamma J(x_t) + R(x_t,a) ] $, where $a$ means \textbf{action}.  In the logic-based setting, an action means applying a logic rule to change the state.
 
 Policy function:
 \begin{equation}
@@ -376,7 +381,7 @@ In reinforcement learning, in particular the \textbf{Policy Gradient} algorithm,
 \end{equation}
 The expectation gives an integral $\displaystyle \nabla_\phi \mathcal{L}(\phi) = \nabla_\phi \int dz q_\phi(z) f(z)$ which removes the ``randomness'' and evaluates to a real number.  This allows to be handled by traditional differential calculus.
 
-At each state, the application of all rules results in a list of all available actions.  The differentiability problem may arise from probabilistic rule-matching.  
+At each state, the application of all rules results in a list of all available actions.  The differentiability problem may arise from probabilistic rule-matching.
 
 \section{Interestingness}
 
@@ -415,9 +420,9 @@ The situation can be illustrated by the following figure (not a commutative diag
 \begin{equation}
 \begin{tikzcd}[column sep=1.5cm, row sep=0.6cm]
 	{} & {} & \parbox{1.5cm}{\linespread{-0.5}\selectfont\centering Bellman update} \arrow[d] \\
-	\parbox{1.2cm}{\linespread{-0.5}\selectfont\centering logic rules} \arrow[r] 
+	\parbox{1.2cm}{\linespread{-0.5}\selectfont\centering logic rules} \arrow[r]
 	& \pi(a|s) \arrow[r,shift left=2pt,harpoon,"\log"]
-	& Q(s,a) \arrow[l, shift left=2pt, harpoon, "\exp"] 
+	& Q(s,a) \arrow[l, shift left=2pt, harpoon, "\exp"]
 \end{tikzcd}
 \end{equation}
 Logic rules give us $\pi(a|s)$, which in turn gives us $Q(s,a)$, but $Q(s,a)$ is also determined by Bellman update.
