@@ -29,8 +29,8 @@
      inkscape:document-units="mm"
      showborder="false"
      inkscape:zoom="1"
-     inkscape:cx="853.5"
-     inkscape:cy="1104.5"
+     inkscape:cx="736.5"
+     inkscape:cy="1010.5"
      inkscape:window-width="1920"
      inkscape:window-height="1059"
      inkscape:window-x="0"
@@ -923,10 +923,10 @@
        transform="translate(-53.562919,-167.2927)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan4">applying softmax is equivalent to selecting </tspan><tspan
+         id="tspan1">applying softmax is equivalent to selecting </tspan><tspan
          x="26.438498"
          y="123.20433"
-         id="tspan5">particular predicates for each rule</tspan></text><text
+         id="tspan2">particular predicates for each rule</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -935,16 +935,16 @@
        transform="translate(79.803693,-169.73163)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan6">applying neural networks to points in </tspan><tspan
+         id="tspan4">applying neural networks to points in </tspan><tspan
          x="26.438498"
          y="123.20433"
-         id="tspan8">Subject Space, outputs truth values for
+         id="tspan5">Subject Space, outputs truth values for
 </tspan><tspan
          x="26.438498"
          y="128.14322"
-         id="tspan10"><tspan
+         id="tspan148"><tspan
    style="font-weight:normal;font-family:'Latin Modern Roman Slanted';-inkscape-font-specification:'Latin Modern Roman Slanted'"
-   id="tspan9">K</tspan> predicates</tspan></text><text
+   id="tspan147">K</tspan> predicates</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -953,15 +953,15 @@
        transform="translate(-20.072439,-25.216636)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan16">move points in Subject Space
+         id="tspan149">move points in Subject Space
 </tspan><tspan
          x="26.438498"
          y="123.20433"
-         id="tspan21">to their respective variable slots
+         id="tspan150">to their respective variable slots
 </tspan><tspan
          x="26.438498"
          y="128.14322"
-         id="tspan22">as desired by each rule</tspan></text><text
+         id="tspan151">as desired by each rule</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -970,7 +970,7 @@
        transform="translate(30.766927,-96.36623)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan25">propositions</tspan></text><text
+         id="tspan152">propositions</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -979,7 +979,7 @@
        transform="translate(-64.963855,-69.101724)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan27">predicates</tspan></text><text
+         id="tspan153">predicates</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -988,7 +988,7 @@
        transform="translate(-55.40517,-147.72652)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan28">rules</tspan></text><text
+         id="tspan154">rules</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:7.05556px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -997,7 +997,7 @@
        transform="translate(-56.401426,-137.68905)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan29">. . . .</tspan></text><text
+         id="tspan155">. . . .</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:3.52778px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;fill:#0000ff;stroke-width:0.264583"
        x="26.438498"
@@ -1006,7 +1006,7 @@
        transform="translate(-52.298143,-86.837106)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan30">Plato</tspan></text><text
+         id="tspan156">Plato</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:3.52778px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;fill:#0000ff;stroke-width:0.264583"
        x="26.438498"
@@ -1015,7 +1015,7 @@
        transform="translate(-65.526718,-82.315046)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan31">Socrates</tspan></text><text
+         id="tspan157">Socrates</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:3.52778px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;fill:#0000ff;stroke-width:0.264583"
        x="26.438498"
@@ -1024,7 +1024,7 @@
        transform="translate(-44.09217,-82.094986)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan32">Zeus</tspan></text><text
+         id="tspan158">Zeus</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="41.650242"
@@ -1033,15 +1033,15 @@
        transform="translate(-114.24337,-97.763743)"><tspan
          x="41.650242"
          y="118.26544"
-         id="tspan34"><tspan
+         id="tspan160"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan33">points in
+           id="tspan159">points in
 </tspan></tspan><tspan
          x="41.650242"
          y="123.20433"
-         id="tspan36"><tspan
+         id="tspan162"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan35">Subject Space</tspan></tspan></text><text
+           id="tspan161">Subject Space</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -1050,7 +1050,7 @@
        transform="translate(-67.439253,-47.038498)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan37">substitutions</tspan></text><text
+         id="tspan163">substitutions</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -1059,7 +1059,7 @@
        transform="translate(29.420689,-48.931233)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan38">substitutions</tspan></text><text
+         id="tspan164">substitutions</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -1068,7 +1068,7 @@
        transform="translate(141.28937,-73.50147)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan39">propositions with TVs</tspan></text><text
+         id="tspan165">propositions with TVs</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="63.0825"
@@ -1077,15 +1077,15 @@
        transform="translate(-9.4088906,-94.210374)"><tspan
          x="63.0825"
          y="118.26544"
-         id="tspan41"><tspan
+         id="tspan167"><tspan
            style="text-align:end;text-anchor:end"
-           id="tspan40">TVs of
+           id="tspan166">TVs of
 </tspan></tspan><tspan
          x="63.0825"
          y="123.20433"
-         id="tspan43"><tspan
+         id="tspan169"><tspan
            style="text-align:end;text-anchor:end"
-           id="tspan42">predicates</tspan></tspan></text><text
+           id="tspan168">predicates</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="40.684692"
@@ -1094,21 +1094,21 @@
        transform="translate(28.908109,-127.07611)"><tspan
          x="40.684692"
          y="118.26544"
-         id="tspan45"><tspan
+         id="tspan171"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan44">TVs of
+           id="tspan170">TVs of
 </tspan></tspan><tspan
          x="40.684692"
          y="123.20433"
-         id="tspan47"><tspan
+         id="tspan173"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan46">constant
+           id="tspan172">constant
 </tspan></tspan><tspan
          x="40.684692"
          y="128.14322"
-         id="tspan49"><tspan
+         id="tspan175"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan48">matching</tspan></tspan></text><text
+           id="tspan174">matching</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="40.684692"
@@ -1117,15 +1117,15 @@
        transform="translate(28.978318,-51.224142)"><tspan
          x="40.684692"
          y="118.26544"
-         id="tspan51"><tspan
+         id="tspan177"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan50">points in
+           id="tspan176">points in
 </tspan></tspan><tspan
          x="40.684692"
          y="123.20433"
-         id="tspan53"><tspan
+         id="tspan179"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan52">variable slots</tspan></tspan></text><text
+           id="tspan178">variable slots</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="40.684692"
@@ -1134,15 +1134,15 @@
        transform="translate(75.795606,-50.738606)"><tspan
          x="40.684692"
          y="118.26544"
-         id="tspan55"><tspan
+         id="tspan181"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan54">a point for each
+           id="tspan180">a point for each
 </tspan></tspan><tspan
          x="40.684692"
          y="123.20433"
-         id="tspan57"><tspan
+         id="tspan183"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan56">output predicate</tspan></tspan></text><text
+           id="tspan182">output predicate</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="32.908432"
@@ -1151,15 +1151,15 @@
        transform="translate(88.39404,-106.84823)"><tspan
          x="32.908432"
          y="118.26544"
-         id="tspan59"><tspan
+         id="tspan185"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan58">TVs of
+           id="tspan184">TVs of
 </tspan></tspan><tspan
          x="32.908432"
          y="123.20433"
-         id="tspan62"><tspan
+         id="tspan187"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan60">rules</tspan></tspan></text><text
+           id="tspan186">rules</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="39.262295"
@@ -1168,11 +1168,11 @@
        transform="translate(148.73513,-100.16296)"><tspan
          x="39.262295"
          y="118.26544"
-         id="tspan64">logits of
+         id="tspan188">logits of
 </tspan><tspan
          x="39.262295"
          y="123.20433"
-         id="tspan68">conclusions</tspan></text><text
+         id="tspan189">conclusions</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -1181,7 +1181,7 @@
        transform="translate(59.366702,-148.89944)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan69">selected predicates</tspan></text><text
+         id="tspan190">selected predicates</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="38.375767"
@@ -1190,17 +1190,17 @@
        transform="translate(-16.039349,-72.536141)"><tspan
          x="38.375767"
          y="118.26544"
-         id="tspan74"><tspan
+         id="tspan192"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan71">predicates
+           id="tspan191">predicates
 </tspan></tspan><tspan
          x="38.375767"
          y="123.20433"
-         id="tspan77"><tspan
+         id="tspan195"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan75">(</tspan><tspan
+           id="tspan193">(</tspan><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan76">neural nets)</tspan></tspan></text><text
+           id="tspan194">neural nets)</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:6.35px;line-height:1.25;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
        x="108.38783"
@@ -1513,7 +1513,7 @@
        transform="translate(-69.822836,-108.49366)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan78">everyone loves Socrates</tspan></text><text
+         id="tspan196">everyone loves Socrates</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="41.650242"
@@ -1522,15 +1522,15 @@
        transform="translate(-112.72944,-123.71225)"><tspan
          x="41.650242"
          y="118.26544"
-         id="tspan80"><tspan
+         id="tspan198"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan79">cylindrification
+           id="tspan197">cylindrification
 </tspan></tspan><tspan
          x="41.650242"
          y="123.20433"
-         id="tspan82"><tspan
+         id="tspan200"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan81">factor</tspan></tspan></text><path
+           id="tspan199">factor</tspan></tspan></text><path
        style="fill:none;stroke:#00ffff;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
        d="M -39.443579,5.2502132 -9.6497943,0.99585366"
        id="path8-0-1-7"
@@ -2195,7 +2195,7 @@
        transform="translate(159.93111,42.85478)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan83">output args</tspan></text><text
+         id="tspan201">output args</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="74.419701"
@@ -2204,15 +2204,15 @@
        transform="translate(40.131459,100.72306)"><tspan
          x="74.419701"
          y="118.26544"
-         id="tspan85"><tspan
+         id="tspan203"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan84">TVs of
+           id="tspan202">TVs of
 </tspan></tspan><tspan
          x="74.419701"
          y="123.20433"
-         id="tspan87"><tspan
+         id="tspan205"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan86">predicates</tspan></tspan></text><text
+           id="tspan204">predicates</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="40.684692"
@@ -2221,15 +2221,15 @@
        transform="translate(35.845566,160.07197)"><tspan
          x="40.684692"
          y="118.26544"
-         id="tspan90"><tspan
+         id="tspan207"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan88">points in
+           id="tspan206">points in
 </tspan></tspan><tspan
          x="40.684692"
          y="123.20433"
-         id="tspan92"><tspan
+         id="tspan209"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan91">variable slots</tspan></tspan></text><text
+           id="tspan208">variable slots</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="40.684692"
@@ -2238,15 +2238,15 @@
        transform="translate(77.37118,144.28893)"><tspan
          x="40.684692"
          y="118.26544"
-         id="tspan94"><tspan
+         id="tspan211"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan93">a point for each
+           id="tspan210">a point for each
 </tspan></tspan><tspan
          x="40.684692"
          y="123.20433"
-         id="tspan96"><tspan
+         id="tspan213"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan95">output predicate</tspan></tspan></text><text
+           id="tspan212">output predicate</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="32.908432"
@@ -2255,15 +2255,15 @@
        transform="translate(85.20711,77.595972)"><tspan
          x="32.908432"
          y="118.26544"
-         id="tspan98"><tspan
+         id="tspan215"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan97">TVs of
+           id="tspan214">TVs of
 </tspan></tspan><tspan
          x="32.908432"
          y="123.20433"
-         id="tspan100"><tspan
+         id="tspan217"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan99">rules</tspan></tspan></text><text
+           id="tspan216">rules</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="32.908432"
@@ -2272,15 +2272,15 @@
        transform="translate(119.912,10.996531)"><tspan
          x="32.908432"
          y="118.26544"
-         id="tspan102"><tspan
+         id="tspan219"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan101">output
+           id="tspan218">output
 </tspan></tspan><tspan
          x="32.908432"
          y="123.20433"
-         id="tspan104"><tspan
+         id="tspan221"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan103">predicate</tspan></tspan></text><text
+           id="tspan220">predicate</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="51.955212"
@@ -2289,15 +2289,15 @@
        transform="translate(102.15647,28.189567)"><tspan
          x="51.955212"
          y="118.26544"
-         id="tspan108"><tspan
+         id="tspan223"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan105">logits of
+           id="tspan222">logits of
 </tspan></tspan><tspan
          x="51.955212"
          y="123.20433"
-         id="tspan112"><tspan
+         id="tspan225"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan109">conclusions</tspan></tspan></text><text
+           id="tspan224">conclusions</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2306,7 +2306,7 @@
        transform="translate(-66.621811,37.067264)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan113">select J out of K predicates in LHS of rules</tspan></text><text
+         id="tspan226">select J out of K predicates in LHS of rules</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2315,7 +2315,7 @@
        transform="translate(-47.505185,20.015832)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan114">select 1 predicate in RHS of rules</tspan></text><text
+         id="tspan227">select 1 predicate in RHS of rules</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2324,7 +2324,7 @@
        transform="translate(-15.736369,52.096369)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan115">constants in rules</tspan></text><text
+         id="tspan228">constants in rules</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2333,7 +2333,7 @@
        transform="translate(-25.581696,69.564727)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan116">cylindrification factors</tspan></text><text
+         id="tspan229">cylindrification factors</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2342,7 +2342,7 @@
        transform="translate(-0.48083793,86.665955)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan117">predicates</tspan></text><text
+         id="tspan230">predicates</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2351,7 +2351,7 @@
        transform="translate(-33.472707,128.6618)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan118">neural nets for predicates</tspan></text><text
+         id="tspan231">neural nets for predicates</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2360,7 +2360,7 @@
        transform="translate(-6.8992649,151.57239)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan119">substitutions</tspan></text><text
+         id="tspan232">substitutions</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="26.438498"
@@ -2369,7 +2369,7 @@
        transform="translate(-17.530204,170.24494)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan120">RHS substitutions</tspan></text><g
+         id="tspan233">RHS substitutions</tspan></text><g
        id="g21-6"
        transform="translate(29.62141,182.32754)"><ellipse
          style="fill:#ffffff;stroke:none;stroke-width:0.545672;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -2685,7 +2685,7 @@
        transform="translate(-17.989714,2.9828738)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan121">K predicate vectors</tspan></text><text
+         id="tspan234">K predicate vectors</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;fill:#ff7f2a;stroke-width:0.264583"
        x="50.984474"
@@ -3077,7 +3077,7 @@
        transform="translate(-2.5975047,112.5951)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan122">truth values</tspan></text><text
+         id="tspan235">truth values</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;fill:#ff7f2a;stroke-width:0.264583"
        x="49.784897"
@@ -3098,7 +3098,7 @@
        transform="translate(-27.99751,99.895135)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan123">points in Subject Space</tspan></text><text
+         id="tspan236">points in Subject Space</tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
        x="82.403427"
@@ -3107,21 +3107,21 @@
        transform="translate(-190.82728,98.010179)"><tspan
          x="82.403427"
          y="118.26544"
-         id="tspan125"><tspan
+         id="tspan238"><tspan
            style="text-align:end;text-anchor:end"
-           id="tspan124">propositions
+           id="tspan237">propositions
 </tspan></tspan><tspan
          x="82.403427"
          y="123.20433"
-         id="tspan127"><tspan
+         id="tspan240"><tspan
            style="text-align:end;text-anchor:end"
-           id="tspan126">from
+           id="tspan239">from
 </tspan></tspan><tspan
          x="82.403427"
          y="128.14322"
-         id="tspan129"><tspan
+         id="tspan242"><tspan
            style="text-align:end;text-anchor:end"
-           id="tspan128">working memory</tspan></tspan></text><text
+           id="tspan241">working memory</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;fill:#ff7f2a;stroke-width:0.264583"
        x="49.784897"
@@ -3261,44 +3261,79 @@
          x="75.887192"
          y="196.74348">①</tspan></text><text
        xml:space="preserve"
-       style="font-weight:300;font-size:7.05556px;line-height:1.25;font-family:'Alibaba Sans';-inkscape-font-specification:'Alibaba Sans, Light';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;white-space:pre;inline-size:111.491;display:inline;stroke-width:0.264583"
+       style="font-weight:300;font-size:7.05556px;line-height:1.25;font-family:'Alibaba Sans';-inkscape-font-specification:'Alibaba Sans, Light';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;white-space:pre;inline-size:145.358;display:inline;stroke-width:0.264583"
        x="226.23676"
        y="232.04338"
        id="text2"
        transform="translate(63.500003,-21.166667)"><tspan
          x="226.23676"
          y="232.04338"
-         id="tspan133"><tspan
+         id="tspan246"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan130">predicates </tspan><tspan
+           id="tspan243">predicates </tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan131">的特殊地位必需取消</tspan><tspan
+           id="tspan244">的特殊地位必需取消</tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan132">,
+           id="tspan245">,
 </tspan></tspan><tspan
          x="226.23676"
          y="241.56839"
-         id="tspan140"><tspan
+         id="tspan250"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan134">但似乎与之相关的是 </tspan><tspan
+           id="tspan247">但似乎与之相关的是 </tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan135">points </tspan><tspan
+           id="tspan248">points </tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan136">概念
+           id="tspan249">概念
 </tspan></tspan><tspan
          x="226.23676"
          y="251.0934"
-         id="tspan146"><tspan
+         id="tspan256"><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan141">而 </tspan><tspan
+           id="tspan251">而 </tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan142">points </tspan><tspan
+           id="tspan252">points </tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan143">观点是转向 </tspan><tspan
+           id="tspan253">观点是转向 </tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan144">HOL </tspan><tspan
+           id="tspan254">HOL </tspan><tspan
            style="text-align:start;text-anchor:start"
-           id="tspan145">的障碍。</tspan></tspan></text></g><g
+           id="tspan255">的障碍。
+</tspan></tspan><tspan
+         x="226.23676"
+         y="260.61841"
+         id="tspan262"><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan257">其实 </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan258">predicate </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan259">空间和 </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan260">subject </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan261">空间大小一样。 
+</tspan></tspan><tspan
+         x="226.23676"
+         y="270.14342"
+         id="tspan268"><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan263">其实 </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan264">rules </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan265">也可以覆盖 </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan266">predicate </tspan><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan267">位置的变量
+</tspan></tspan><tspan
+         x="226.23676"
+         y="279.66841"
+         id="tspan270"><tspan
+           style="text-align:start;text-anchor:start"
+           id="tspan269">那是否违反了几何图像呢？
+</tspan></tspan></text></g><g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="mask"
