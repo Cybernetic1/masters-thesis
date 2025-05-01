@@ -165,12 +165,12 @@ It is perhaps illuminating to rewrite the logic rule this way:
 where $I$ is at least $\{ 1,2,3 \}$.
 
 In my mind, I had this mental picture:
-\begin{equation}
-	\logic{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables1.png}}})
-	\wedge
-	\logic{father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables2.png}}})
-	\rightarrow
-	\logic{grand\hbox{-}father}(\vcenter{\hbox{\includegraphics[scale=0.5]{logic-variables3.png}}})
+\vspace{-0.2cm} \begin{equation}
+\logic{father}(\begin{tikzpicture} \draw[line width=3pt, cyan!70] (0.2,0.9) -- (0.2,0) (0.5,0.9) -- (0.5,0) (0.8,0.2) -- (0.8,0); \draw[thick] (0,0) to (1,0); \end{tikzpicture})
+\wedge
+\logic{father}(\begin{tikzpicture} \draw[line width=3pt, cyan!70] (0.2,0.2) -- (0.2,0) (0.5,0.9) -- (0.5,0) (0.8,0.9) -- (0.8,0); \draw[thick] (0,0) to (1,0); \end{tikzpicture})
+\rightarrow
+\logic{grand\hbox{-}father}(\begin{tikzpicture} \draw[line width=3pt, cyan!70] (0.2,0.9) -- (0.2,0) (0.5,0.2) -- (0.5,0) (0.8,0.9) -- (0.8,0); \draw[thick] (0,0) to (1,0); \end{tikzpicture})
 \end{equation}
 where the blue bars represent some kind of relative ``proportion'' of variables, such that the overall construction could be \textbf{differentiable}.
 
@@ -192,8 +192,8 @@ The eventual implementation is quite natural:
 \tikzmark{Y3} \fcolorbox{cyan!70}{white}{$\hat{x}^3$} \\
 & \qquad w_{ij}^k \\
 & \nonumber \\
-& \logic{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \bullet_{13}) \wedge
-\logic{father}(\tikzmark{X21} \bullet_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \logic{grand\hbox{-}father}(x_1,\bullet_2,x_3)
+& \logic{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \Square_{13}) \wedge
+\logic{father}(\tikzmark{X21} \Square_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \logic{grand\hbox{-}father}(x_1,\Square_2,x_3)
 \nonumber
 \begin{tikzpicture}[remember picture,overlay]
 \draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
@@ -230,7 +230,9 @@ The structure of our formula is reminiscent of the Transformer's \textbf{Self-At
 \begin{equation}
 \text{Attention}(\mathbf{Q,K,V}) = \text{soft}\max  \frac{\langle \mathbf{Q,K} \rangle}{\sqrt{d_k}} \mathbf{V}
 \end{equation}
-What we're doing here is to move variables around;  this suggests that the Transformer is also capable of moving \textbf{tokens} around.  The syntactic manipulation ability of Transformers has been corroborated by other researchers [cite].
+but softmax does not commute with inner products, so the two formulas are not equivalent.
+
+What our formula does is to move variables around;  this suggests that the Transformer is also capable of moving \textbf{tokens} around.  The syntactic manipulation ability of Transformers has been corroborated by other researchers [cite].
 
 For comparison, this is the \textbf{neural string diagram} for the traditional Self-Attention:
 \begin{equation}
@@ -251,7 +253,7 @@ To evaluate a rule:  Each predicate, such as $\logic{father(\_,\_)}$, is matched
 \begin{enumerate}
 	\item The {\LARGE\color{magenta}\RIGHTarrow} indicates \textbf{internal data} supplied by the Transformer, similar to the Q,K,V matrices in traditional Transformers.  These are modified through ``learning'' or training.
 	\item The 3 \RIGHTarrow's \ are \textbf{inputs} to the Transformer, this is matched with the 3 \textbf{outputs} on the right of the diagram.
-	\item Orange tags {\color{orange}$[M,N,...]$} indicate the \textbf{dimensions} of data streams.
+	\item Tags {\color{orange}$[M,N,...]$} indicate the \textbf{dimensions} of data streams.
 \end{enumerate}
 
 \textbf{Remarks:}
@@ -267,7 +269,7 @@ To evaluate a rule:  Each predicate, such as $\logic{father(\_,\_)}$, is matched
 	\item[\circled{3}] Each proposition in Working Memory has a truth value.  This TV has to be multiplied to the result in \circled{2}.
 \end{enumerate}
 
-The operation $a \stackrel{?}{=} b$ can be implemented by this function:
+The operation $a \stackrel{?}{=} b$ can be implemented by the function $(x \stackrel{?}{=} y) \coloneq y \cdot \sigmoid(x) + 1 - \sigmoid(x)$, where $\sigmoid$ is the sigmoid function such as $\frac{1}{1 + \exp(-100x + 50)}$.
 \begin{equation}
 \vcenter{\hbox{\includegraphics[scale=0.5]{selector-2D-plot.png}}}
 \qquad
@@ -277,23 +279,34 @@ The operation $a \stackrel{?}{=} b$ can be implemented by this function:
 
 \section{Computer representation of rules}
 
+As explained in the Introduction (\S\ref{Ch0_logic_rules}), our rules are of the form:
+\begin{equation}
+\begin{aligned}
+\mbox{rule 1:} & \quad \boxed{P^1_{1} X^1_{11}... X^1_{1I}} \;\wedge\; \boxed{P^1_2 X^1_{21} ... X^1_{2I}} \;\wedge\;...\; \boxed{P^1_K X^1_{K1} ... X^1_{KI}} \rightarrow \boxed{P^1_0 X^1_{01} ... X^1_{0I}} \\
+\mbox{rule 2:} & \quad \boxed{P^2_{1} X^2_{11}... X^2_{1I}} \;\wedge\; \boxed{P^2_2 X^2_{21} ... X^2_{2I}} \;\wedge\;...\; \boxed{P^2_K X^2_{K1} ... X^2_{KI}} \rightarrow \boxed{P^2_0 X^2_{01} ... X^2_{0I}} \\
+.... & \quad .... \\
+\mbox{rule M:} & \quad \boxed{P^M_{1} X^M_{11}... X^M_{1I}} \;\wedge\; \boxed{P^M_2 X^M_{21} ... X^M_{2I}} \;\wedge\;...\; \boxed{P^M_K X^M_{K1} ... X^M_{KI}} \rightarrow \boxed{P^M_0 X^M_{01} ... X^M_{0I}}
+	\raisetag{20pt}
+\end{aligned}
+\end{equation}
+
 Each logic rule may vary in the following ways:
-\begin{itemize}
+\begin{enumerate}
 	\item number of literals and their polarity
 	\item number of arguments
 	\item each argument may be a logic variable or logic constant
 	\item which specific logic variable or constant.
-\end{itemize}
+\end{enumerate}
 The numbers in \#1 and \#2 can be fixed.
 
 For \#3 and \#4, each variable or constant may be represented by a pair $(p, \gamma)$ where $p$ is a point (or coordinates) in the Subject Space, and $\gamma$ is the \textbf{cylindrification factor} representing the degree to which this argument is like a point or like a ``for all'' variable.  % But this is problematic as the dimension of the Subject Space $X$ is not the same as the dimension of the variable space $\{ X_1, X_2, ... , X_n \}$.
 
-Each predicate has as its arguments $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.
+Each predicate has as its arguments $n$ copies of the Subject Space, ie, $X^n$.  One or more of the copies may be \textbf{cylindrified}.  The meaning of the cylindrical factor $\gamma$ is illustrated as follows:
 %There are two senses of the word ``cylindrify.''  Think for example the change from (John, Mary) to ($x$, Mary) as in ``everyone loves Mary.''  In the first sense, the point John on the $x$-coordinate becomes ``everyone,'' ie, the entire $x$-dimension becomes a cylinder.  In the second sense, a cylinder appears on the $y$-axis at the position of Mary:
 \begin{equation}
 \vcenter{\hbox{\includegraphics[scale=0.7]{cylindrify-example.png}}}
 \end{equation}
-In the above example, we have two copies of the Subject Space $X$, each is 1-dimensional.
+In the above example, $(X,Y)$ are two copies of the Subject Space $X$, each is 1-dimensional.
 
 During rule matching, suppose a point $p = (a,b)$ is presented from a proposition $P(p) = P(a,b)$ in the state $X$.  This is matched against a term $Q(X,Y)$ in the rule.  The rule-matching process seems costly, which suggests we may need to re-formulate a neural-network version of the \textbf{Rete algorithm} -- but such an algorithm would not be differentiable.  In fact, differentiability dictates that all rules must participate in matching at all times (or at least probabilistically with non-zero probabilities).
 
@@ -329,6 +342,38 @@ We suggest the following values (for a general human-level intelligent agent):
 \end{equation}
 
 Total number of parameters (in descending order of size) $= MKIX + MK\Psi + MKI^2 + MKI + 2MK + MI^2 + NIX + N\Psi + N + K(|X|+(L-2)h) \approx $ 20 trillion.  Perhaps $M$ and $K$ have to be reduced.
+
+All the parameters (rules) of the Logic Transformer:
+\begin{equation}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Parameters} & \textbf{Dimensions} & \textbf{??} \\
+\hline
+$K$ predicates & $M$ rules, $K$ predicates, $|\Psi|$ & \\
+
+\end{tabular}
+\end{equation}
+
+\section{``Higher-order'' logic}
+
+The first-order Logic Transformer was simple to understand as a logic, but limited in expressive power as a logic.  As Ben Goertzel pointed out (during an online discussion with the author), it does not have mechanisms to handle \textbf{Skolem functions} and thus existential quantifiers.
+
+One way to get around this problem is to define $\exists$ via a set of higher-order logic rules.  Without explicitly specifying how to do so (though I believe this can be done), we simply use a more powerful ``higher-order'' logic in the sense that rules admit substitutions in all (predicate or argument) positions, and hope that machine learning will learn the required axioms.
+
+The new rules are of the form (without the special designation of ``predicates''):
+\begin{equation}
+\begin{aligned}
+\mbox{rule 1:} & \quad \boxed{X^1_{11}... X^1_{1I}} \;\wedge\; \boxed{X^1_{21} ... X^1_{2I}} \;\wedge\;...\; \boxed{X^1_{K1} ... X^1_{KI}} \rightarrow \boxed{X^1_{01} ... X^1_{0I}} \\
+\mbox{rule 2:} & \quad \boxed{X^2_{11}... X^2_{1I}} \;\wedge\; \boxed{X^2_{21} ... X^2_{2I}} \;\wedge\;...\; \boxed{X^2_{K1} ... X^2_{KI}} \rightarrow \boxed{X^2_{01} ... X^2_{0I}} \\
+.... & \quad .... \\
+\mbox{rule M:} & \quad \boxed{X^M_{11}... X^M_{1I}} \;\wedge\; \boxed{X^M_{21} ... X^M_{2I}} \;\wedge\;...\; \boxed{X^M_{K1} ... X^M_{KI}} \rightarrow \boxed{X^M_{01} ... X^M_{0I}}
+\end{aligned}
+\end{equation}
+
+This gives us the revised string diagram:
+\begin{equation}
+\hspace{-1cm}\vcenter{\hbox{\includegraphics[scale=0.7]{logic-Transformer-string-diagram-3.png}}}
+\end{equation}
 
 \section{Rules recommender}
 

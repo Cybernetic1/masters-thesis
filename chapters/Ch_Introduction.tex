@@ -28,6 +28,7 @@ Think of it as the ``embedding space'' of atomic concepts (or words or tokens in
 In our learning algorithm, each predicate function is implemented as a \textbf{neural network} associated to that predicate (input = vector in $X$, output truth value).  This is convenient as neural networks can carve out regions of irregular shapes (not necessarily simply connected) in a high dimensional space.
 
 \section{Logic rules}
+\label{Ch0_logic_rules}
 
 For simplicity we restrict to \textbf{Horn rules}, which are of the form:
 \begin{equation}
@@ -35,12 +36,14 @@ Q_1 \wedge Q_2 \wedge Q_3 \wedge ... \rightarrow Q_0
 \end{equation}
 where each $Q_i$ is an \textbf{atomic proposition} that may be optionally negated.  This is the form of rules used by the logic programming language \textbf{PROLOG}, so we assume it is powerful enough to express knowledge for AGI.
 
-If rules are to be differentiable, this means every rule may potentially ``morph'' into any other rule in the space of rules.  The only solution I can think of is to maintain a fixed number, $M$, of rules, each containing a fixed number, $K$, of predicates\footnote{In my mind I think of ``millions of rules'' and ``tens of thousands of predicates'' so the letters $M$ and $K$ are easy to remember.  The number of predicates may be comparable to human vocabulary size.  My estimate for rules is just an arbitrary guess.}.  The parameters would look like a rectangular matrix:
+If rules are to be \textbf{differentiable}, we cannot have 1,000,000 rules at one moment and then the next moment 1,000,001 rules (that would not be differentiable).  The only solution I can think of is to maintain a \textit{fixed} number, $M$, of rules.  Every rule may potentially ``morph'' into any other rule in this space of rules.  Each rule contains a fixed number, $K$, of predicates\footnote{In my mind I think of ``millions of rules'' and ``tens of thousands of predicates'' so the letters $M$ and $K$ are easy to remember.  The number of predicates may be comparable to human vocabulary size.  My estimate for rules is just an arbitrary guess.}.  The parameters would look like a \textit{rectangular} matrix:
 \begin{equation}
 \begin{aligned}
 	\mbox{rule 1:} & \quad \boxed{P^1_{1} X^1_{11}... X^1_{1I}} \;\wedge\; \boxed{P^1_2 X^1_{21} ... X^1_{2I}} \;\wedge\;...\; \boxed{P^1_K X^1_{K1} ... X^1_{KI}} \rightarrow \boxed{P^1_0 X^1_{01} ... X^1_{0I}} \\
 	\mbox{rule 2:} & \quad \boxed{P^2_{1} X^2_{11}... X^2_{1I}} \;\wedge\; \boxed{P^2_2 X^2_{21} ... X^2_{2I}} \;\wedge\;...\; \boxed{P^2_K X^2_{K1} ... X^2_{KI}} \rightarrow \boxed{P^2_0 X^2_{01} ... X^2_{0I}} \\
-	.... & \quad ....
+	.... & \quad .... \\
+	\mbox{rule M:} & \quad \boxed{P^M_{1} X^M_{11}... X^M_{1I}} \;\wedge\; \boxed{P^M_2 X^M_{21} ... X^M_{2I}} \;\wedge\;...\; \boxed{P^M_K X^M_{K1} ... X^M_{KI}} \rightarrow \boxed{P^M_0 X^M_{01} ... X^M_{0I}}
+	\raisetag{20pt}
 \end{aligned}
 \end{equation}
 where $P$ are predicates and $X$ are arguments (that can be constants or variables).  Each predicate has $I$ arguments, also fixed.

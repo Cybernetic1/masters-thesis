@@ -1,0 +1,50 @@
+% Run with pdflatex to generate PDF file
+% Then use pdf2svg to get SVG file
+
+%\documentclass{article} % will be converted to
+%\documentclass[tikz]{standalone}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{tikzmark, calc}
+\usepackage{amsmath}
+\usepackage{wasysym}
+
+\newcommand\logic[1]{{\color{purple}\mathsf{#1}}}
+
+\begin{document}
+\begin{align}
+\nonumber
+& \qquad \qquad \tikzmark{Y1}
+\setlength{\fboxrule}{3pt}
+\fcolorbox{cyan!70}{white}{$\hat{x}^1$}
+\qquad
+\tikzmark{Y2} \fcolorbox{cyan!70}{white}{$\hat{x}^2$}
+\qquad
+\tikzmark{Y3} \fcolorbox{cyan!70}{white}{$\hat{x}^3$} \\
+& \qquad w_{ij}^k \\
+& \nonumber \\
+& \logic{father}(\tikzmark{X11} x_{11}, \tikzmark{X12} x_{12}, \tikzmark{X13} \Square_{13}) \wedge
+\logic{father}(\tikzmark{X21} \Square_{21}, \tikzmark{X22} x_{22}, \tikzmark{X23} x_{23}) \rightarrow \logic{grand\hbox{-}father}(x_1,\Square_2,x_3)
+\nonumber
+\begin{tikzpicture}[remember picture,overlay]
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X12) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X13) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X21) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X22) +(7pt,12pt) $);
+\draw (pic cs:Y1) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X12) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X13) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X21) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X22) +(7pt,12pt) $);
+\draw (pic cs:Y2) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X11) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X12) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X13) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X21) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X22) +(7pt,12pt) $);
+\draw (pic cs:Y3) +(10pt,-7pt) -- ($ (pic cs:X23) +(7pt,12pt) $);
+\end{tikzpicture}
+\end{align}
+\end{document}

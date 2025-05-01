@@ -6,7 +6,7 @@
 %%
 %% Contributors:
 %% https://github.com/HKFoggyU/hkust-thesis/graphs/contributors
-%% 
+%%
 %% License:
 %% LaTeX Project Public License (version 1.3c)
 %%
@@ -61,7 +61,7 @@
     defend-date   = {8 March 2024},     % <date month year>
     depthead      = {Prof. Someone, Head of Department},
     %% reviewers only for some departments, like ECE
-    reviewer      = {Prof. AAA (Chairperson), 
+    reviewer      = {Prof. AAA (Chairperson),
                      Prof. BBB (Supervisor),
                      Prof. CCC (Co-Supervisor),
                      Prof. DDD,
@@ -90,6 +90,8 @@
 \newcommand{\ie}{\textit{i.e.}, }
 \newcommand\logic[1]{{\color{purple}\mathsf{#1}}}
 \newcommand\autoencoder{\raisebox{0pt}{\includegraphics[scale=0.15]{auto-encoder-symbol.png}\hspace*{3pt}}}
+\newcommand*\sigmoid{\vcenter{\hbox{\includegraphics{sigmoid.png}}}}
+% \def\coloneq{\mathrel{\mathop:}=}
 \newcommand\squaref{\hspace*{-4pt}\raisebox{-2pt}{
 		\tikz[scale=.3,thick]{
 			\draw (0.3,0) to (0,0) to ++(-0.4,-1.1) to ++(-0.3,0);
@@ -114,15 +116,15 @@
 %% Titlepage  -> Authorization -> Signature ->
 %% Acknowledgements ->
 %% TOC -> List of Figures -> List of Tables ->
-%% Abstract -> 
+%% Abstract ->
 %% -------------------------------------------------
-%% <Main body> -> 
+%% <Main body> ->
 %% -------------------------------------------------
 %% References -> (Appendices)
 %% -------------------------------------------------
 
 \frontmatter
-\maketitle 
+\maketitle
 
 \authorization
 \signaturepage
