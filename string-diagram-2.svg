@@ -7,7 +7,7 @@
    viewBox="0 0 252.28258 166.65964"
    version="1.1"
    id="svg1"
-   inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="string-diagram-2.svg"
    inkscape:export-filename="../2025/AGI-2025/logic-Transformer-string-diagram-3.png"
    inkscape:export-xdpi="384"
@@ -27,8 +27,8 @@
      inkscape:deskcolor="#ffffff"
      inkscape:document-units="mm"
      inkscape:zoom="1.1086736"
-     inkscape:cx="706.24934"
-     inkscape:cy="312.08464"
+     inkscape:cx="510.97095"
+     inkscape:cy="522.69667"
      inkscape:window-width="1080"
      inkscape:window-height="1895"
      inkscape:window-x="0"
@@ -36,7 +36,8 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      borderlayer="false"
-     showgrid="false" />
+     showgrid="false"
+     inkscape:pageshadow="0" />
   <defs
      id="defs1">
     <marker
@@ -389,17 +390,17 @@
        transform="translate(55.391979,44.682704)"><tspan
          x="74.419701"
          y="118.26544"
-         id="tspan47"><tspan
+         id="tspan38001"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan1">TVs of
+           id="tspan37999">TVs of
 </tspan></tspan><tspan
          x="74.419701"
          y="123.20433"
-         id="tspan50"><tspan
+         id="tspan38007"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan48">atom</tspan><tspan
+           id="tspan38003">atom</tspan><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan49">s</tspan></tspan></text>
+           id="tspan38005">s</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -409,15 +410,15 @@
        transform="translate(50.047752,93.44828)"><tspan
          x="40.684692"
          y="118.26544"
-         id="tspan52"><tspan
+         id="tspan38011"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan51">points in
+           id="tspan38009">points in
 </tspan></tspan><tspan
          x="40.684692"
          y="123.20433"
-         id="tspan54"><tspan
+         id="tspan38015"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan53">variable slots</tspan></tspan></text>
+           id="tspan38013">variable slots</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -427,21 +428,21 @@
        transform="translate(134.96505,92.509884)"><tspan
          x="40.684692"
          y="118.26544"
-         id="tspan57"><tspan
+         id="tspan38021"><tspan
            style="font-style:italic;font-weight:normal;font-family:'DejaVu Math TeX Gyre';-inkscape-font-specification:'DejaVu Math TeX Gyre'"
-           id="tspan55">M</tspan><tspan
+           id="tspan38017">M</tspan><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan56"> output atoms
+           id="tspan38019"> output atoms
 </tspan></tspan><tspan
          x="40.684692"
          y="123.49078"
-         id="tspan61"><tspan
+         id="tspan38029"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan58">each has </tspan><tspan
+           id="tspan38023">each has </tspan><tspan
            style="font-style:italic;font-weight:normal;font-family:'DejaVu Math TeX Gyre';-inkscape-font-specification:'DejaVu Math TeX Gyre'"
-           id="tspan59">I</tspan><tspan
+           id="tspan38025">I</tspan><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan60"> tokens</tspan></tspan></text>
+           id="tspan38027"> tokens</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -451,15 +452,15 @@
        transform="translate(100.46763,10.972282)"><tspan
          x="32.908432"
          y="118.26544"
-         id="tspan63"><tspan
+         id="tspan38033"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan62">TVs of
+           id="tspan38031">TVs of
 </tspan></tspan><tspan
          x="32.908432"
          y="123.20433"
-         id="tspan65"><tspan
+         id="tspan38037"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan64">rules</tspan></tspan></text>
+           id="tspan38035">rules</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -469,15 +470,15 @@
        transform="translate(105.77531,-38.43412)"><tspan
          x="51.955212"
          y="118.26544"
-         id="tspan69"><tspan
+         id="tspan38041"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan68">logits of
+           id="tspan38039">logits of
 </tspan></tspan><tspan
          x="51.955212"
          y="123.20433"
-         id="tspan74"><tspan
+         id="tspan38045"><tspan
            style="text-align:center;text-anchor:middle"
-           id="tspan71">conclusions</tspan></tspan></text>
+           id="tspan38043">conclusions</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -487,11 +488,11 @@
        transform="translate(-45.026419,-29.55643)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan77">select <tspan
+         id="tspan38051">select <tspan
    style="font-style:italic;font-weight:normal;font-family:'DejaVu Math TeX Gyre';-inkscape-font-specification:'DejaVu Math TeX Gyre'"
-   id="tspan75">J</tspan> out of <tspan
+   id="tspan38047">J</tspan> out of <tspan
    style="font-style:italic;font-weight:normal;font-family:'DejaVu Math TeX Gyre';-inkscape-font-specification:'DejaVu Math TeX Gyre'"
-   id="tspan76">K</tspan> atoms in LHS of rules</tspan></text>
+   id="tspan38049">K</tspan> atoms in LHS of rules</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -501,7 +502,7 @@
        transform="translate(-25.263832,-46.60786)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan78">select 1 atom in RHS of rules</tspan></text>
+         id="tspan38053">select 1 atom in RHS of rules</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -511,7 +512,7 @@
        transform="translate(-1.5819107,-14.527321)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan79">constants in rules</tspan></text>
+         id="tspan38055">constants in rules</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -521,7 +522,7 @@
        transform="translate(-11.306547,2.9410367)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan80">cylindrification factors</tspan></text>
+         id="tspan38057">cylindrification factors</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -531,7 +532,7 @@
        transform="translate(-9.6985707,62.03811)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan81">neural nets for atoms</tspan></text>
+         id="tspan38059">neural nets for atoms</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -541,7 +542,7 @@
        transform="translate(8.8489929,84.9487)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan82">substitutions</tspan></text>
+         id="tspan38061">substitutions</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -551,7 +552,7 @@
        transform="translate(-1.1077937,103.62125)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan83">RHS substitutions</tspan></text>
+         id="tspan38063">RHS substitutions</tspan></text>
     <g
        id="g21-6"
        transform="translate(44.88193,122.583)">
@@ -1162,7 +1163,7 @@
        transform="translate(11.19002,25.843348)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan84">truth values</tspan></text>
+         id="tspan38065">truth values</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;fill:#ff7f2a;stroke-width:0.264583"
@@ -1185,7 +1186,7 @@
        transform="translate(-22.503027,39.092245)"><tspan
          x="26.438498"
          y="118.26544"
-         id="tspan85">atoms (made up of tokens)</tspan></text>
+         id="tspan38067">atoms (made up of tokens)</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;white-space:pre;inline-size:95.1434;display:inline;stroke-width:0.264583"
@@ -1195,27 +1196,27 @@
        transform="translate(-180.08899,28.177601)"><tspan
          x="82.403427"
          y="118.26544"
-         id="tspan87"><tspan
+         id="tspan38071"><tspan
            style="text-align:end;text-anchor:end"
-           id="tspan86">propositions
+           id="tspan38069">propositions
 </tspan></tspan><tspan
          x="82.403427"
          y="123.20433"
-         id="tspan89"><tspan
+         id="tspan38075"><tspan
            style="text-align:end;text-anchor:end"
-           id="tspan88">from
+           id="tspan38073">from
 </tspan></tspan><tspan
          x="82.403427"
          y="128.14322"
-         id="tspan91"><tspan
+         id="tspan38079"><tspan
            style="font-weight:normal;-inkscape-font-specification:'Alibaba PuHuiTi';text-align:end;text-anchor:end"
-           id="tspan90">working
+           id="tspan38077">working
 </tspan></tspan><tspan
          x="82.403427"
          y="133.0821"
-         id="tspan93"><tspan
+         id="tspan38083"><tspan
            style="font-weight:normal;-inkscape-font-specification:'Alibaba PuHuiTi';text-align:end;text-anchor:end"
-           id="tspan92">memory</tspan></tspan></text>
+           id="tspan38081">memory</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:300;font-size:4.93889px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;fill:#ff7f2a;stroke-width:0.264583"
@@ -1305,6 +1306,27 @@
        id="path7003"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:300px;line-height:125%;font-family:'TeX Gyre Pagella';-inkscape-font-specification:'TeX Gyre Pagella';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.0660614"
        d="m 3.2787542,141.56303 c -0.8647067,0.40342 -1.4255487,1.21148 -1.6345477,3.08498 l -0.457977,4.10539 c -0.25661797,2.30037 -1.14276594,2.94259 -2.10669984,3.44093 0.9355839,0.47462 1.89014387,1.14025 2.10669984,3.22737 l 0.457977,4.41388 c 0.194409,1.87366 0.741491,2.61037 1.6345477,3.10871 -0.8647067,-0.0238 -0.8319937,-0.18984 -1.1580307,-0.61699 -0.396915,-0.54581 -0.889062,-1.44839 -1.039175,-2.89514 l -0.45797897,-4.41389 c -0.17718097,-1.70763 -1.61491787,-2.34932 -2.45127293,-2.82394 0.87888206,-0.47461 2.23333996,-0.998 2.45127293,-2.89512 l 0.45797897,-3.98675 c 0.187969,-1.63628 0.628085,-2.5629 0.996648,-3.10871 0.311861,-0.45088 0.279149,-0.61699 1.2005577,-0.64072" />
+    <text
+       xml:space="preserve"
+       style="font-weight:300;font-size:6.35px;line-height:1;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="21.125648"
+       y="263.1015"
+       id="text31980"><tspan
+         sodipodi:role="line"
+         id="tspan31978"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.93889px;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="21.125648"
+         y="263.1015">即使这张图已经存在有不少问题：</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.93889px;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="21.125648"
+         y="269.45151"
+         id="tspan34790">1）为什么 matching 不影响 TV？ 即使 matching 失败？</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:4.93889px;font-family:'Alibaba PuHuiTi';-inkscape-font-specification:'Alibaba PuHuiTi, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="21.125648"
+         y="275.80151"
+         id="tspan37708">2）</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
