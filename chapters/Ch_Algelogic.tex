@@ -249,14 +249,20 @@ To evaluate a rule:  Each predicate, such as $\logic{father(\_,\_)}$, is matched
 \hspace{-1.5cm}\vcenter{\hbox{\includegraphics[scale=0.7]{logic-Transformer-string-diagram-2.png}}}
 \end{equation}
 
-\textbf{Legend:}
+\subsubsection{Legend}
+\newcommand{\bigMagentaArrow}[0]{{\LARGE{\color{magenta}\RIGHTarrow}}}
 \begin{enumerate}
-	\item The {\LARGE\color{magenta}\RIGHTarrow} indicates \textbf{internal data} supplied by the Transformer, similar to the Q,K,V matrices in traditional Transformers.  These are modified through ``learning'' or training.
+	\item The \bigMagentaArrow indicates \textbf{internal data} supplied by the Transformer, similar to the Q,K,V matrices in traditional Transformers.  These are modified through ``learning'' or training.
 	\item The 3 \RIGHTarrow's \ are \textbf{inputs} to the Transformer, this is matched with the 3 \textbf{outputs} on the right of the diagram.
 	\item Tags {\color{orange}$[M,N,...]$} indicate the \textbf{dimensions} of data streams.
 \end{enumerate}
 
-\textbf{Remarks:}
+\subsubsection{Overall explanation of the diagram}
+Start from recalling that logic rules are stored as a rectangular matrix of parameters:
+
+These parameters are passed as \bigMagentaArrow from the left of the diagram.  When I say ``select $J$ out of $K$ predicates,''  it means applying Softmax which is explicitly shown in the diagram.  Softmax does not need other data parameters -- it is just an operation that exaggerates the differences among the input components.  
+
+\subsubsection{Remarks}
 \begin{enumerate}  % [label=\protect\circled{\arabic*}]
 	\item[\textbullet] The \textbf{grayed-out} parts of the circuit tries to match the \textbf{predicates} of Working-Memory propositions to those in the rules.  For example, the predicate $\logic{loves}$ where $\logic{loves(John,Mary)}$ matches $\logic{loves}(X_1,X_2)$.  But I take the more liberal approach where matching succeeds whenever a point in Working Memory falls within the target predicate's region of definition, regardless of whether the source and target predicates match or not.  For example, assume $\logic{human(Socrates)}$ is in Working Memory, and we want to match against $\logic{mortal(X_1)}$.  This will succeed if the $\logic{human}$ region lies strictly within the $\logic{mortal}$ region in Subject Space.  If the predicate regions are learned properly, this would be the case.  Using this approach, rules are more easily satisfied, and the code seems to be simpler.
 
