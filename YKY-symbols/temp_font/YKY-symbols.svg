@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="YKY-symbols" horiz-adv-x="916.2644074475421">
+    <font-face font-family="YKY-symbols"
+      units-per-em="1000" ascent="1000"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="squaref"
+      unicode="&#x66;"
+      horiz-adv-x="916.2644074475421" d="M39.2618313466653 0V78.5021180179292H263.0313515909762L598.2046054575903 1000.1324007486946H877.0025761008768V921.6302630282732H653.2330558565659L318.0597921387055 0zM172.022761304305 670.3465175844744V748.8486356024036H877.0025761008768V670.3465175844744z" />
+  </font>
+</defs>
+</svg>

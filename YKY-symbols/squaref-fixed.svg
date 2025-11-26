@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.301 10.151">
+  <g transform="translate(0, 10.151) scale(1, -1)">
+    <path d="M8.90234 9.753906H6.351563L2.94922 .39844H.39844" 
+          fill="black" 
+          stroke="black" 
+          stroke-width=".79701"/>
+    <path d="M 1.7457203,7.20312 H 8.90234" 
+          fill="black"
+          stroke="black" 
+          stroke-width="0.79701"/>
+  </g>
+</svg>
